@@ -153,9 +153,7 @@ enum my_keycodes {
 #define AlfredActions HYPR(KC_A)
 #define Buffer HYPR(KC_V)
 #define FPiP LCMD(LSFT(LALT(KC_RBRC))) // Firefox. Picture-in-Picture
-#define OpenTerm HYPR(KC_S)
-#define OpenBrowser HYPR(KC_B)
-#define OpenMpv HYPR(KC_M)
+#define AppStack HYPR(KC_S)
 #define OpenTg HYPR(KC_G)
 #define PrevApp LCMD(KC_TAB)
 #define ChangeApp RSFT(RALT(KC_RCMD))
@@ -229,15 +227,12 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case _H:
         case _S:
         case _E:
-            // Do not select the hold action when another key is pressed.
             return false;
         default:
-            // Immediately select the hold action when another key is pressed.
             return true;
     }
 }
 
-uint16_t change_app_timer = 0;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case CODE_ARRAY:
@@ -308,8 +303,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, TG(_APP),    _,   __, _, _, _, _, _
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, ViW, _, OpenMpv, _, _, _, _, _, RGB_TOG, _, _,
-    kindaVim, _RT, OpenTerm, OpenTg, Homerow, _, _, _, Tmux, _, _, _,
+    _, ViW, kindaVim, Homerow, _, _, _, _, _, RGB_TOG, _, _,
+    _, _RT, AppStack, OpenTg, _, _, _, _, Tmux, _, _, _,
     _, _, Scroll, _RF, _, _, _, _, _, _, _, _,
     _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
 ),
