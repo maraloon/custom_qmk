@@ -16,7 +16,8 @@ enum layers {
 };
 
 enum my_keycodes {
-  CODE_ARRAY = SAFE_RANGE,
+  CHANGE_APP = SAFE_RANGE,
+  CODE_ARRAY,
   CODE_TO,
 };
 
@@ -157,6 +158,7 @@ enum my_keycodes {
 #define OpenMpv HYPR(KC_M)
 #define OpenTg HYPR(KC_G)
 #define PrevApp LCMD(KC_TAB)
+#define ChangeApp RSFT(RALT(KC_RCMD))
 
 #define Tmux LCTL(KC_A)
 #define ViW LCTL(KC_W)
@@ -313,8 +315,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, _, TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
-    NewLine, Left, Down,      Right,   Home,  _, _, TG(_GAME), PrevApp, NextWindow, Alt,  Command,
-    _, WheelDown, WheelUp, Lang, End, _, _, TG(_PS1),           Shift, TG(_FN),  _,  _,
+    NewLine, Left, Down,      Right,   Home,  _, _, TG(_GAME), PrevApp, NextWindow, ChangeApp,  _,
+    _, WheelDown, WheelUp, Lang, End, _, _, TG(_PS1),           _, TG(_FN),  _,  _,
              _,    _,         Delete, DelWord,    DelLine, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
