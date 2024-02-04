@@ -204,14 +204,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
-#define _RF LALT(KC_1)  // ф
-// #define _RYA LALT(KC_2) // я
-#define _RJ LALT(KC_3)  // ж
-#define _RZ LALT(KC_4)  // з
-#define _RT LALT(KC_5)  // ъ
-// #define _RE LALT(KC_6)  // э
-#define _RB LALT(KC_7)  // б
-#define _RYU LALT(KC_8)  // ю
+#define _RF RALT(KC_1)  // ф
+#define _RJ RALT(KC_3)  // ж
+#define _RZ RALT(KC_4)  // з
+#define _RT RALT(KC_5)  // ъ
+#define _RB RALT(KC_7)  // б
+#define _RYU RALT(KC_8)  // ю
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ALPHA] = LAYOUT_ortho_4x12_1x2uC(
