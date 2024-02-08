@@ -33,10 +33,10 @@ enum my_keycodes {
 #define _L KC_L
 #define _Y KC_Y
 #define _U KC_U
-#define _A CTL_T(KC_A)
+#define _A CMD_T(KC_A)
 #define _R KC_R
 #define _S ALT_T(KC_S)
-#define _T CTL_T(KC_T)
+#define _T CMD_T(KC_T)
 #define _G KC_G
 #define _M KC_M
 #define _N KC_N
@@ -46,10 +46,10 @@ enum my_keycodes {
 #define _Z KC_Z
 #define _X KC_X
 #define _C KC_C
-#define _D CMD_T(KC_D)
+#define _D CTL_T(KC_D)
 #define _V KC_V
 #define _K KC_K
-#define _H CMD_T(KC_H)
+#define _H CTL_T(KC_H)
 
 #define _0 KC_0
 #define _1 KC_1
