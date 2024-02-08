@@ -174,7 +174,6 @@ enum my_keycodes {
 #define Maximixe LCAG(_M)
 #define Last LCAG(_L)
 #define Fullscreen KC_F11
-#define WezTermFs LALT(Enter)
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -231,7 +230,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, KC_LPRN,  _0, KC_RPRN, _, _, _, _, KC_LCBR, _9, KC_RCBR, _,
     KC_LBRC, _1, _2, _3, _, _, _, _, _5, _6, _8, KC_RBRC,
     _, KC_LT,  KC_GT, _4, _, _, _, _, _7, CODE_TO, CODE_ARRAY, _,
-    _,  _,  _, _,  _, __, Command, Control, Tab, _, _
+    _,  _,  _, _,  _, __, NewLine, Tab, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
     _, Minus, Slash, Asterisk,   _, _, _, _,   Exlm, Question, Underscore, _,
@@ -253,7 +252,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, _, TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
-    NewLine, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Alt,  Command,
+    _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Alt,  Command,
     _, WheelDown, WheelUp, Lang, End, _, _, _,           Shift, _,  _,  _,
              _,    _,         Delete, DelWord,    DelLine, __, _, _, _, _, _
 ),
@@ -266,7 +265,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
     _, TopLeft,  Fullscreen, TopRight, _,  _, _, _,  _, _, _, _,
     Last, LeftHalf, Maximixe, RightHalf, NudgeUp,  _, _, _,  _, _, _, _,
-    _, BottomLeft, WezTermFs, BottomRight, NudgeDown, _, _, _, _, _, _, _,
+    _, BottomLeft, _, BottomRight, NudgeDown, _, _, _, _, _, _, _,
     _,  _, _, WinSmaller, WinLarger, __, _, _, _,  _,  _
 ),
 [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
