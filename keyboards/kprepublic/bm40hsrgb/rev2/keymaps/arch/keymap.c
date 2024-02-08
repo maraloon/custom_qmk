@@ -140,15 +140,14 @@ enum my_keycodes {
 #define DelWord LCTL(Backspace)
 #define DelLine LCTL(KC_U)
 
-#define Alfred HYPR(Space)
+#define Menu HYPR(Space)
 #define AlfredPrev HYPR(KC_F)
 #define AlfredActions HYPR(KC_A)
 #define Buffer HYPR(KC_V)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
-#define OpenTerm HYPR(KC_S)
-#define OpenBrowser HYPR(KC_B)
-#define OpenMpv HYPR(KC_M)
-#define OpenTg HYPR(KC_G)
+#define Pass HYPR(KC_F)
+#define AppStack HYPR(KC_S)
+#define OpenTg HYPR(KC_T)
 #define PrevApp LALT(KC_TAB)
 
 #define Tmux LCTL(KC_A)
@@ -157,9 +156,7 @@ enum my_keycodes {
 #define Bigger LCTL(Equal)
 #define Settings LCMD(Comma)
 #define MoveToBin LCMD(Backspace)
-#define Homerow LCMD(LSFT(Space))
 #define Scroll LCMD(LSFT(KC_J))
-#define kindaVim HYPR(KC_N)
 
 #define LeftHalf LCAG(Left)
 #define RightHalf LCAG(Right)
@@ -239,14 +236,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, QK_BOOT, AlfredActions, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, FPiP, _,
-    _, _, Buffer, Alfred, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
+    _, QK_BOOT, Pass, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, FPiP, _,
+    _, _, Buffer, Menu, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, _, _, MoveToBin, Smaller, Bigger, Settings, _,
     _, _, _, TG(_APP),    _,   __, _, _, _, _, _
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, ViW, _, OpenMpv, _, _, _, _, _, RGB_TOG, _, _,
-    kindaVim, _RT, OpenTerm, OpenTg, Homerow, _, _, _, Tmux, _, _, _,
+    _, ViW, _, _, _, _, _, _, _, RGB_TOG, _, _,
+    _, _RT, AppStack, OpenTg, _, _, _, _, Tmux, _, _, _,
     _, _, Scroll, _RF, _, _, _, _, _, _, _, _,
     _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
 ),
