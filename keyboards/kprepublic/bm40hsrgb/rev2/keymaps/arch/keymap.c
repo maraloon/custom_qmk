@@ -118,7 +118,7 @@ enum my_keycodes {
 #define Question KC_QUES
 #define Slash KC_PSLS
 #define Ampersand KC_AMPR
-#define Dot KC_PDOT
+#define Dot KC_DOT
 #define Comma KC_COMM
 #define Quote KC_QUOT
 #define DQuote KC_DQUO
@@ -146,7 +146,8 @@ enum my_keycodes {
 #define Buffer HYPR(KC_V)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
 #define Pass HYPR(KC_F)
-#define AppStack HYPR(KC_S)
+#define Browser HYPR(KC_B)
+#define Term HYPR(KC_S)
 #define OpenTg HYPR(KC_T)
 #define PrevApp LALT(KC_TAB)
 
@@ -242,8 +243,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, TG(_APP),    _,   __, _, _, _, _, _
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, ViW, _, _, _, _, _, _, _, RGB_TOG, _, _,
-    _, _RT, AppStack, OpenTg, _, _, _, _, Tmux, _, _, _,
+    _, ViW, Browser, _, _, _, _, _, _, RGB_TOG, _, _,
+    _, _RT, Term, OpenTg, _, _, _, _, Tmux, _, _, _,
     _, _, Scroll, _RF, _, _, _, _, _, _, _, _,
     _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
 ),
