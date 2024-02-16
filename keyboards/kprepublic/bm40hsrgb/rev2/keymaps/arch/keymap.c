@@ -135,6 +135,7 @@ enum my_keycodes {
 
 #define PrntSc1 HYPR(KC_1)
 #define PrntSc2 HYPR(KC_2)
+#define PrntSc3 HYPR(KC_3)
 
 #define NewLine LSFT(Enter)
 #define DelWord LCTL(Backspace)
@@ -157,7 +158,6 @@ enum my_keycodes {
 #define Bigger LCTL(Equal)
 #define Settings LCMD(Comma)
 #define MoveToBin LCMD(Backspace)
-#define Scroll LCMD(LSFT(KC_J))
 
 #define LeftHalf LCAG(Left)
 #define RightHalf LCAG(Right)
@@ -237,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, QK_BOOT, Pass, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, FPiP, _,
+    _, QK_BOOT, Pass, AlfredPrev, _, _, _, PrntSc3, PrntSc1, PrntSc2, FPiP, _,
     _, _, Buffer, Menu, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, _, _, MoveToBin, Smaller, Bigger, Settings, _,
     _, _, _, TG(_APP),    _,   __, _, _, _, _, _
@@ -245,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
     _, ViW, Browser, _, _, _, _, _, _, RGB_TOG, _, _,
     _, _RT, Term, OpenTg, _, _, _, _, Tmux, _, _, _,
-    _, _, Scroll, _RF, _, _, _, _, _, _, _, _,
+    _, _, _, _RF, _, _, _, _, _, _, _, _,
     _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
