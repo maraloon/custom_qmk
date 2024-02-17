@@ -33,15 +33,15 @@ enum my_keycodes {
 #define _L KC_L
 #define _Y KC_Y
 #define _U KC_U
-#define _A CMD_T(KC_A)
-#define _R KC_R
-#define _S ALT_T(KC_S)
+#define _N KC_N
+#define _R ALT_T(KC_R)
+#define _S CTL_T(KC_S)
 #define _T CMD_T(KC_T)
 #define _G KC_G
 #define _M KC_M
-#define _N KC_N
-#define _E ALT_T(KC_E)
-#define _I KC_I
+#define _A CMD_T(KC_A)
+#define _E CTL_T(KC_E)
+#define _I ALT_T(KC_I)
 #define _O KC_O
 #define _Z KC_Z
 #define _X KC_X
@@ -181,6 +181,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case _H:
         case _S:
         case _E:
+        case _R:
+        case _I:
             // Do not select the hold action when another key is pressed.
             return false;
         default:
