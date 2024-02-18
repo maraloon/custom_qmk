@@ -159,18 +159,10 @@ enum my_keycodes {
 #define Settings LCMD(Comma)
 #define MoveToBin LCMD(Backspace)
 
-#define LeftHalf LCAG(Left)
-#define RightHalf LCAG(Right)
-#define WinSmaller LCAG(Minus)
-#define WinLarger LCAG(Equal)
-#define TopLeft LCAG(KC_4)
-#define TopRight LCAG(KC_5)
-#define BottomLeft LCAG(KC_6)
-#define BottomRight LCAG(KC_7)
-#define NudgeUp LCAG(KC_8)
-#define NudgeDown LCAG(KC_9)
-#define Maximixe LCAG(_M)
-#define Last LCAG(_L)
+#define MakeFloat LCAG(KC_C)
+#define MoveFloat LCAG(KC_D)
+#define ScratchpadMove LCAG(KC_S)
+#define ScratchpadShow LCAG(KC_T)
 #define Fullscreen KC_F11
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
@@ -239,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, QK_BOOT, Pass, AlfredPrev, _, _, _, PrntSc3, PrntSc1, PrntSc2, FPiP, _,
+    _, QK_BOOT, Pass, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
     _, _, Buffer, Menu, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, _, _, MoveToBin, Smaller, Bigger, Settings, _,
     _, _, _, TG(_APP),    _,   __, _, _, _, _, _
@@ -263,10 +255,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _,      _,      _,          __,    _, _, _, _, _
 ),
 [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
-    _, TopLeft,  Fullscreen, TopRight, _,  _, _, _,  _, _, _, _,
-    Last, LeftHalf, Maximixe, RightHalf, NudgeUp,  _, _, _,  _, _, _, _,
-    _, BottomLeft, _, BottomRight, NudgeDown, _, _, _, _, _, _, _,
-    _,  _, _, WinSmaller, WinLarger, __, _, _, _,  _,  _
+    _, _,  Fullscreen, _, _,  _, _, _,  _, _, _, _,
+    _, FPiP, ScratchpadMove, ScratchpadShow, _,  _, _, _,  _, _, _, _,
+    _, _, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
+    _,  _, _, _, _, __, _, _, _,  _,  _
 ),
 [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
     _,       _,     MUp,   _,         _, _, _, _, _, _, _, _,
