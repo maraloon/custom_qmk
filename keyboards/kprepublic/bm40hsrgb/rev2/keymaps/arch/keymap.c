@@ -146,6 +146,7 @@ enum my_keycodes {
 #define AlfredActions HYPR(KC_A)
 #define Buffer HYPR(KC_V)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
+#define MPiP LCAG(KC_X) // mpv float
 #define Pass HYPR(KC_F)
 #define Browser HYPR(KC_B)
 #define Term HYPR(KC_S)
@@ -257,7 +258,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
     _, Monitor1,  Fullscreen, Monitor2, _,  _, _, _,  _, _, _, _,
     _, FPiP, ScratchpadMove, ScratchpadShow, _,  _, _, _,  _, _, _, _,
-    _, _, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
+    _, MPiP, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
     _,  _, _, _, _, __, _, _, _,  _,  _
 ),
 [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
