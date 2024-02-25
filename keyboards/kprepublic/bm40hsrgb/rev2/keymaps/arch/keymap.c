@@ -34,14 +34,14 @@ enum my_keycodes {
 #define _Y KC_Y
 #define _U KC_U
 #define _N KC_N
-#define _R ALT_T(KC_R)
+#define _R KC_R
 #define _S CTL_T(KC_S)
 #define _T CMD_T(KC_T)
 #define _G KC_G
 #define _M KC_M
 #define _A CMD_T(KC_A)
 #define _E CTL_T(KC_E)
-#define _I ALT_T(KC_I)
+#define _I KC_I
 #define _O KC_O
 #define _Z KC_Z
 #define _X KC_X
@@ -164,6 +164,8 @@ enum my_keycodes {
 #define ScratchpadMove LCAG(KC_S)
 #define ScratchpadShow LCAG(KC_T)
 #define Fullscreen KC_F11
+#define Monitor1 LCAG(KC_1)
+#define Monitor2 LCAG(KC_2)
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -171,8 +173,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case _A:
         case _S:
         case _E:
-        case _R:
-        case _I:
         case _D:
         case _H:
             // Do not select the hold action when another key is pressed.
@@ -225,8 +225,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _,  _,  _, _,  _, __, NewLine, Tab, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
-    _, Minus, Slash, Asterisk,   _, _, _, _,   Exlm, Question, Underscore, _,
-    Equal, BackSlash, Caret, Dollar, Ampersand, _, _, Tilda,   Dot, Comma, Quote, DQuote,
+    _, BackSlash, Slash, Asterisk,   _, _, _, _,   Exlm, Question, Underscore, _,
+    Equal, Minus, Caret, Dollar, Ampersand, _, _, Tilda,   Dot, Comma, Quote, DQuote,
     _, Percent, Hash, At, Pipe, _, _, Grave,   Colon, Semicolon, Plus, _,
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
@@ -255,7 +255,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _,      _,      _,          __,    _, _, _, _, _
 ),
 [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
-    _, _,  Fullscreen, _, _,  _, _, _,  _, _, _, _,
+    _, Monitor1,  Fullscreen, Monitor2, _,  _, _, _,  _, _, _, _,
     _, FPiP, ScratchpadMove, ScratchpadShow, _,  _, _, _,  _, _, _, _,
     _, _, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
     _,  _, _, _, _, __, _, _, _,  _,  _
