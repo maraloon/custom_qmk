@@ -76,6 +76,8 @@ enum my_keycodes {
 #define RightClick KC_BTN2
 #define WheelUp KC_MS_WH_UP
 #define WheelDown KC_MS_WH_DOWN
+#define WheelLeft KC_MS_WH_LEFT
+#define WheelRight KC_MS_WH_RIGHT
 #define MUp KC_MS_UP
 #define MDown KC_MS_DOWN
 #define MLeft KC_MS_LEFT
@@ -264,7 +266,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
     _,       _,     MUp,   _,         _, _, _, _, _, _, _, _,
     RightClick, MLeft, MDown, MRight, _, _, _, _, MSpeed0, MSpeed1, MSpeed2, TG(_MOUSE),
-    _, WheelUp, WheelDown, LeftClick,  _, _, _, _, _, _, _, _,
+    _, WheelUp, WheelDown, LeftClick,  _, _, _, _, WheelLeft, WheelRight, _, _,
     _,       _,     _,     _, _, __, _, _, _, _, _
 ),
 };
