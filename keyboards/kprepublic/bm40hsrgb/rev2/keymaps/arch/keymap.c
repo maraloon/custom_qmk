@@ -90,7 +90,7 @@ enum my_keycodes {
 #define Backspace KC_BSPC
 #define Delete KC_DEL
 #define Command KC_LCMD
-#define NextWindow LCMD(KC_GRV)
+#define NextWindow LCMD(KC_T)
 #define Lang KC_CAPS
 #define Control KC_LCTL
 #define Alt KC_LALT
@@ -152,7 +152,7 @@ enum my_keycodes {
 #define Pass HYPR(KC_F)
 #define Browser HYPR(KC_B)
 #define Term HYPR(KC_S)
-#define OpenTg HYPR(KC_T)
+#define Chat HYPR(KC_T)
 #define PrevApp LALT(KC_TAB)
 
 #define Tmux LCTL(KC_A)
@@ -234,21 +234,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, QK_BOOT, Pass, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
+    KC_KB_POWER, QK_BOOT, Pass, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
     _, _, Buffer, Menu, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, _, _, MoveToBin, Smaller, Bigger, Settings, _,
     _, _, _, TG(_APP),    _,   __, _, _, _, _, _
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, ViW, Browser, _, _, _, _, _, _, RGB_TOG, _, _,
-    _, _RT, Term, OpenTg, _, _, _, _, Tmux, _, _, _,
-    _, _, _, _RF, _, _, _, _, _, _, _, _,
+    _, ViW, _, _, _, _, _, _, _, RGB_TOG, _, _,
+    _, Browser, Chat, Term, _, _, _, _, Tmux, _, _, _,
+    _, _, _RT, _RF, _, _, _, _, _, _, _, _,
     _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, _, TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
     _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Alt,  Command,
-    _, WheelDown, WheelUp, Lang, End, _, _, _,           Shift, _,  _,  _,
+    _, WheelUp, WheelDown, Lang, End, _, _, _,           Shift, _,  _,  _,
              _,    _,         Delete, DelWord,    DelLine, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
@@ -265,9 +265,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
     _,       _,     MUp,   _,         _, _, _, _, _, _, _, _,
-    RightClick, MLeft, MDown, MRight, _, _, _, _, MSpeed0, MSpeed1, MSpeed2, TG(_MOUSE),
-    _, WheelUp, WheelDown, LeftClick,  _, _, _, _, WheelLeft, WheelRight, _, _,
-    _,       _,     _,     _, _, __, _, _, _, _, _
+    RightClick, MLeft, MDown, MRight, _, _, _, _, MSpeed1, MSpeed2, _, TG(_MOUSE),
+    _, WheelUp, WheelDown, LeftClick,  _, _, _, _, _, _, _, _,
+    _, _, _,WheelLeft, WheelRight, __, _, _, _, _, _
 ),
 };
 
