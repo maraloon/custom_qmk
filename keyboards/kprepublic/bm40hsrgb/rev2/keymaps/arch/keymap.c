@@ -9,6 +9,7 @@ enum layers {
   _MOUSE,
   _APP,
   _APP2,
+  _APP3,
   _RECTANGLE,
 };
 
@@ -90,7 +91,7 @@ enum my_keycodes {
 #define Backspace KC_BSPC
 #define Delete KC_DEL
 #define Command KC_LCMD
-#define NextWindow LCMD(KC_T)
+#define NextWindow LCMD(KC_GRV)
 #define Lang KC_CAPS
 #define Control KC_LCTL
 #define Alt KC_LALT
@@ -150,9 +151,16 @@ enum my_keycodes {
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
 #define MPiP LCAG(KC_X) // mpv float
 #define Pass HYPR(KC_F)
-#define Browser HYPR(KC_B)
+
+#define Browser HYPR(KC_R)
 #define Term HYPR(KC_S)
 #define Chat HYPR(KC_T)
+#define Vpn HYPR(KC_4)
+
+#define WS_1 HYPR(KC_X)
+#define WS_2 HYPR(KC_C)
+#define WS_3 HYPR(KC_D)
+
 #define PrevApp LALT(KC_TAB)
 
 #define Tmux LCTL(KC_A)
@@ -203,7 +211,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define _RZ RALT(KC_4)  // з
 #define _RT RALT(KC_5)  // ъ
 #define _RB RALT(KC_7)  // б
-#define _RYU RALT(KC_8)  // ю
+#define _RYU RALT(KC_8) // ю
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ALPHA] = LAYOUT_ortho_4x12_1x2uC(
@@ -241,9 +249,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
     _, ViW, _, _, _, _, _, _, _, RGB_TOG, _, _,
-    _, Browser, Chat, Term, _, _, _, _, Tmux, _, _, _,
-    _, _, _RT, _RF, _, _, _, _, _, _, _, _,
+    _, Browser, Chat, Term, _, _, _, _, Tmux, MO(_APP3), _, _,
+    _, _, _RT, _RF, Vpn, _, _, _, _, _, _, _,
     _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
+),
+[_APP3] = LAYOUT_ortho_4x12_1x2uC(
+    _, _, _, _, _, _, _, _, _, _, _, _,
+    _, WS_1, WS_2, WS_3, _, _, _, _, _, _, _, _,
+    _, _, _, _, _, _, _, _, _, _, _, _,
+    _, _, _, _, _,  __, _,  _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, _, TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
