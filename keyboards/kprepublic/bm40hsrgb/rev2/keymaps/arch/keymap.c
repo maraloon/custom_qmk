@@ -2,6 +2,7 @@
 
 enum layers {
   _ALPHA,
+  _WASD,
   _SYMBOL,
   _NUMBER,
   _NAVIGATION,
@@ -223,6 +224,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     __,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP2), _, _
 ),
+[_WASD] = LAYOUT_ortho_4x12_1x2uC(
+    Tab, _Q, _W, _E, _B, _, _, _J, _L, _U, _Y, _RZ,
+    Shift, KC_A, KC_S, KC_D, _G, _, _, _M, _A, _E, _I, TG(_WASD),
+    Shift, _, _, KC_C, _V, _, _, _K, _H, _RB, _RYU, _RJ,
+    _, _,
+    MO(_APP), KC_C, Space,
+    __,
+    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP2), _, _
+),
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
     /*
      * KC_LBRC [ ] KC_RBRC
@@ -260,7 +270,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  __, _,  _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    _, PgUp, Up,        PgDn,    _, _, _, _, TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
+    _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
     _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Alt,  Command,
     _, WheelUp, WheelDown, Lang, End, _, _, _,           Shift, _,  _,  _,
              _,    _,         Delete, DelWord,    DelLine, __, _, _, _, _, _
