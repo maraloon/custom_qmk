@@ -146,12 +146,10 @@ enum my_keycodes {
 #define DelLine LCTL(KC_U)
 
 #define Menu HYPR(Space)
-#define AlfredPrev HYPR(KC_F)
-#define AlfredActions HYPR(KC_A)
 #define Buffer HYPR(KC_V)
+#define Pass HYPR(KC_F)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
 #define MPiP LCAG(KC_X) // mpv float
-#define Pass HYPR(KC_F)
 
 #define Browser HYPR(KC_R)
 #define Term HYPR(KC_S)
@@ -165,11 +163,8 @@ enum my_keycodes {
 #define PrevApp LALT(KC_TAB)
 
 #define Tmux LCTL(KC_A)
-#define ViW LCTL(KC_W)
 #define Smaller LCTL(Minus)
 #define Bigger LCTL(Equal)
-#define Settings LCMD(Comma)
-#define MoveToBin LCMD(Backspace)
 
 #define MakeFloat LCAG(KC_C)
 #define MoveFloat LCAG(KC_D)
@@ -219,11 +214,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-    LightDec, LightInc,
+    _, _,
     MO(_APP), LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
     __,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP2),
-    SoundDec, SoundInc
+    _, _
 ),
 [_WASD] = LAYOUT_ortho_4x12_1x2uC(
     Tab, _Q, _W, _E, _B, _, _, _J, _L, _U, _Y, _RZ,
@@ -253,27 +248,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, QK_BOOT, Pass, AlfredPrev, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
-    _, _, Buffer, Menu, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
-    _, _, _, _, _, _, _, MoveToBin, Smaller, Bigger, Settings, _,
-    _, _, _, TG(_APP),    _,   __, _, _, _, _, _
+    _, PrntSc1, PrntSc2, PrntSc3, _, _, _, _, _, _, _, _,
+    _, _, LightDec, LightInc, _, _, _, _, Menu, Buffer, Pass, _,
+    _, _, SoundDec, SoundInc, _, _, _, _, Smaller, Bigger, _, _,
+    _, _, _, _,    _,   __, _, _, _, _, _
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, ViW, _, _, _, _, _, _, _, RGB_TOG, _, _,
-    _, Browser, Chat, Term, _, _, _, _, Tmux, MO(_APP3), _, _,
-    _, _, _RT, _RF, Vpn, _, _, _, _, _, _, _,
-    _, _, _, _, KC_LSFT,  __, _,  _, _, _, _
+    _, _, _, _, _, _, _, _, _, RGB_TOG, _, _,
+    _, _, _RT, _RF, _, _, _, _, _, MO(_APP3), _, _,
+    _, _, LSFT(_RT), LSFT(_RF), Vpn, _, _, _, WS_1, WS_2, WS_3, _,
+    _, _, _, _, _,  __, _,  _, _, _, _
 ),
 [_APP3] = LAYOUT_ortho_4x12_1x2uC(
+    KC_KB_POWER, QK_BOOT, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _, _, _, _, _, _, _, _,
-    _, WS_1, WS_2, WS_3, _, _, _, _, _, _, _, _,
     _, _, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _,  __, _,  _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
-    _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Alt,  Command,
-    _, WheelUp, WheelDown, Lang, End, _, _, _,           Shift, _,  _,  _,
+    _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Tmux,  _,
+    _, WheelUp, WheelDown, Lang, End, _, _, _,   Browser, Chat, Term,  _,
              _,    _,         Delete, DelWord,    DelLine, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
