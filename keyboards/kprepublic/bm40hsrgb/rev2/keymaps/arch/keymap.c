@@ -17,6 +17,7 @@ enum layers {
 enum my_keycodes {
   CODE_ARRAY = SAFE_RANGE,
   CODE_TO,
+  DELETE_LINE,
 };
 
 #undef _______
@@ -142,8 +143,6 @@ enum my_keycodes {
 #define PrntSc3 HYPR(KC_3)
 
 #define NewLine LSFT(Enter)
-#define DelWord LCTL(Backspace)
-#define DelLine LCTL(KC_U)
 
 #define Menu HYPR(Space)
 #define Buffer HYPR(KC_V)
@@ -195,6 +194,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) { SEND_STRING(" => "); } return false;
     case CODE_TO:
       if (record->event.pressed) { SEND_STRING("->"); } return false;
+    case DELETE_LINE:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LSFT(SS_TAP(X_HOME)) SS_TAP(X_BSPC));
+      }
+      return false;
     default:
       return true; // Process all other keycodes normally
   }
@@ -267,7 +271,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
     _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Tmux,  _,
     _, WheelUp, WheelDown, Lang, End, _, _, _,   Browser, Chat, Term,  _,
-             _,    _,         Delete, DelWord,    DelLine, __, _, _, _, _, _
+    // TODO: подвинуть DELETE_LINE левее, как привыкну к Ctrl+Backspace
+    _,    _,    Delete,    _,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
     _, _,      SCUp,   _,         _, _, _, _,   _, _, _, _,
