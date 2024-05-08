@@ -10,7 +10,6 @@ enum layers {
   _MOUSE,
   _APP,
   _APP2,
-  _APP3,
   _RECTANGLE,
 };
 
@@ -250,29 +249,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, PrntSc1, PrntSc2, PrntSc3, _, _, _, _, _, _, _, _,
-    _, _, LightDec, LightInc, _, _, _, _, Menu, Buffer, Pass, _,
-    _, _, SoundDec, SoundInc, _, _, _, _, _, _, _, _,
-    _, _, _, _,    _,   __, _, _, _, _, _
+    _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
+    _, _, LightDec, LightInc, _, _, _, _, Menu, Buffer,     Pass, _,
+    _, _, _, _, _, _, _, _, _, _, _, _,
+    _, _, _, _, _, __, _, _, _, _, _
 ),
 [_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, _, _, _, _, _, _, _, _, RGB_TOG, _, _,
-    _, _, _RT, _RF, _, _, _, _, _, MO(_APP3), _, _,
-    _, _, LSFT(_RT), LSFT(_RF), Vpn, _, _, _, WS_1, WS_2, WS_3, _,
-    _, _, _, _, _,  __, _,  _, _, _, _
-),
-[_APP3] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, QK_BOOT, _, _, _, _, _, _, _, _, _, _,
-    _, _, _, _, _, _, _, _, _, _, _, _,
-    _, _, _, _, _, _, _, _, _, _, _, _,
+    _, WS_1, WS_2, WS_3, _, _, _, _, _, _, QK_BOOT, KC_KB_POWER,
+    _, RGB_TOG, _RT, _RF, _, _, _, _, _, _, _, _,
+    _, _, LSFT(_RT), LSFT(_RF), Vpn, _, _, _, _, _, _, _,
     _, _, _, _, _,  __, _,  _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
     _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Tmux,  _,
     _, WheelUp, WheelDown, Lang, End, _, _, _,   Browser, Chat, Term,  _,
-    // TODO: подвинуть DELETE_LINE левее, как привыкну к Ctrl+Backspace
-    _,    _,    Delete,    _,    DELETE_LINE, __, _, _, _, _, _
+    _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
     _, _,      SCUp,   _,         _, _, _, _,   _, _, _, _,
