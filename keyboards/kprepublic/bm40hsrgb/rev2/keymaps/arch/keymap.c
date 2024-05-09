@@ -9,7 +9,6 @@ enum layers {
   _TG,
   _MOUSE,
   _APP,
-  _APP2,
   _RECTANGLE,
 };
 
@@ -219,9 +218,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, QK_AREP, _, _K, _H, _RB, _RYU, _RJ,
     _, _,
-    MO(_APP), LT(_NUMBER, Backspace), LT(_APP, Space),
+    _, LT(_NUMBER, Backspace), LT(_APP, Space),
     QK_REP,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP2),
+    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _,
     _, _
 ),
 [_WASD] = LAYOUT_ortho_4x12_1x2uC(
@@ -231,7 +230,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _,
     MO(_APP), KC_C, Space,
     __,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP2), _, _
+    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _, _, _
 ),
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
     /*
@@ -253,15 +252,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
-    _, _, LightDec, LightInc, _, _, _, _, Menu, Buffer,     Pass,    Commands,
-    _, _, _, _, _, _, _, _, _, _, _, _,
-    _, _, _, _, _, __, _, _, _, _, _
-),
-[_APP2] = LAYOUT_ortho_4x12_1x2uC(
-    _, WS_1, WS_2, WS_3, _, _, _, _, _, _, QK_BOOT, KC_KB_POWER,
-    _, RGB_TOG, _RT, _RF, _, _, _, _, _, _, _, _,
-    _, _, LSFT(_RT), LSFT(_RF), Vpn, _, _, _, _, _, _, _,
-    _, _, _, _, _,  __, _,  _, _, _, _
+    _, RGB_TOG, LightDec, LightInc, _, _, _, _, Menu, Buffer,     Pass,    Commands,
+    LSFT(_RT), LSFT(_RF), _RT, _RF, Vpn, _, _, _, WS_1, WS_2, WS_3, _,
+    _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
