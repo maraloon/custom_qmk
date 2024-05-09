@@ -28,13 +28,13 @@ enum my_keycodes {
 
 #define _Q KC_Q
 #define _W KC_W
-#define _F KC_F
+#define _F SFT_T(KC_F)
 #define _P KC_P
 #define _B KC_B
 #define _J KC_J
 #define _L KC_L
 #define _Y KC_Y
-#define _U KC_U
+#define _U SFT_T(KC_U)
 #define _N KC_N
 #define _R KC_R
 #define _S CTL_T(KC_S)
@@ -179,6 +179,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case _E:
         case _D:
         case _H:
+        case _F:
+        case _U:
             // Do not select the hold action when another key is pressed.
             return false;
         default:
@@ -217,7 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, QK_AREP, _, _K, _H, _RB, _RYU, _RJ,
     _, _,
-    MO(_APP), LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
+    MO(_APP), LT(_NUMBER, Backspace), LT(_APP, Space),
     QK_REP,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP2),
     _, _
