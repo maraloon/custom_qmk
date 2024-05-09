@@ -146,6 +146,7 @@ enum my_keycodes {
 #define Menu HYPR(Space)
 #define Buffer HYPR(KC_V)
 #define Pass HYPR(KC_F)
+#define Commands HYPR(KC_O)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
 #define MPiP LCAG(KC_X) // mpv float
 
@@ -240,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, KC_LPRN,  _0, KC_RPRN, _, _, _, _, KC_LCBR, _9, KC_RCBR, _,
     KC_LBRC, _1, _2, _3, _, _, _, _, _5, _6, _8, KC_RBRC,
     _, KC_LT,  KC_GT, _4, _, _, _, _, _7, CODE_TO, CODE_ARRAY, _,
-    _,  _,  _, _,  _, __, NewLine, Tab, _, _, _
+    _,  _,  _, _,  _, __, NewLine, Lang, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
     _, BackSlash, Slash, Asterisk,   _, _, _, _,   Exlm, Question, Underscore, _,
@@ -250,7 +251,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
-    _, _, LightDec, LightInc, _, _, _, _, Menu, Buffer,     Pass, _,
+    _, _, LightDec, LightInc, _, _, _, _, Menu, Buffer,     Pass,    Commands,
     _, _, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _, __, _, _, _, _, _
 ),
@@ -263,7 +264,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
     _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Tmux,  _,
-    _, WheelUp, WheelDown, Lang, End, _, _, _,   Browser, Chat, Term,  _,
+    _, WheelUp, WheelDown, Tab, End, _, _, _,   Browser, Chat, Term,  _,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
