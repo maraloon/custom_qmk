@@ -216,12 +216,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ALPHA] = LAYOUT_ortho_4x12_1x2uC(
     _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
-    _Z, _X, _C, _D, _V, QK_AREP, _, _K, _H, _RB, _RYU, _RJ,
-    _, _,
-    _, LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
+    _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
+    _, _, _,
+    LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
     MO(_APP),
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _,
-    _, _
+    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
+    _, _, _
 ),
 [_WASD] = LAYOUT_ortho_4x12_1x2uC(
     Tab, _Q, _W, _E, _B, _, _, _J, _L, _U, _Y, _RZ,
@@ -245,21 +245,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _,  _,  _, _,  _, __, NewLine, Lang, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
-    _, BackSlash, Slash, Asterisk,   _, _, _, _,   Exlm, Question, Underscore, _,
-    Equal, Minus, Caret, Dollar, Ampersand, _, _, Tilda,   Dot, Comma, Quote, DQuote,
-    _RT, Percent, Hash, At, Pipe, _, _, Grave,   Colon, Semicolon, Plus, _RF,
-    _, _, _, _, _,  _,  _, _,  _, _, _
+    LSFT(_RT), BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, LSFT(_RF),
+    Equal, Minus, Caret, Dollar, _, _, _, Tilda, Dot, Comma, Quote, DQuote,
+    _RT, Percent, Hash, At, _, _, _, Grave, Colon, Semicolon, Plus, _RF,
+    _, _, _, Ampersand, Pipe,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
-    _, RGB_TOG, LightDec, LightInc, _, _, _, _, Menu, Buffer,     Pass,    Commands,
-    LSFT(_RT), LSFT(_RF), _RT, _RF, Vpn, _, _, _, WS_1, WS_2, WS_3, _,
+    _, RGB_TOG, LightDec, LightInc, _, _, _, _, _, _, _, _,
+    _, _, _, _, Vpn, _, _, _, WS_1, WS_2, WS_3, _,
     _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    _, PgUp, Up,        PgDn,    _, _, _, TG(_WASD), TG(_MOUSE),       MO(_TG), MO(_RECTANGLE),   _,
-    _, Left, Down,      Right,   Home,  _, _, _, PrevApp, NextWindow, Tmux,  _,
-    _, WheelUp, WheelDown, Tab, End, _, _, _,   Browser, Chat, Term,  _,
+    _, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
+    Home, Left, Down,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, MO(_TG),
+    _, WheelUp, WheelDown, Tab, _, _, _, _,   Browser, Chat, Term,  _,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
