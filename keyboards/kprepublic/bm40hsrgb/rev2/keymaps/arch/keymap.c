@@ -219,7 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _Z, _X, _C, _D, _V, QK_AREP, _, _K, _H, _RB, _RYU, _RJ,
     _, _,
     _, LT(_NUMBER, Backspace), LT(_APP, Space),
-    QK_REP,
+    MT(MOD_LSFT, Space),
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _,
     _, _
 ),
