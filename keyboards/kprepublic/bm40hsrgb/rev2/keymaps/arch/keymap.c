@@ -237,15 +237,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * KC_LCBR { } KC_RCBR
      * KC_LT < > KC_GT
      */
-    _, KC_LPRN,  _0, KC_RPRN, _, _, _, _, KC_LCBR, _9, KC_RCBR, _,
-    KC_LBRC, _1, _2, _3, _, _, _, _, _5, _6, _8, KC_RBRC,
-    _, KC_LT,  KC_GT, _4, _, _, _, _, _7, CODE_TO, CODE_ARRAY, _,
+    KC_LPRN, KC_RPRN,  _0, _, _, _, _, _, _, _9, KC_LCBR, KC_RCBR,
+    _, _1, _2, _3, _, _, _, _, _5, _6, _8, _,
+    _, KC_LT,  KC_GT, _4, _, _, _, _, _7, KC_LBRC, KC_RBRC, _,
     _,  _,  _, _,  _, __, NewLine, Lang, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
     LSFT(_RT), BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, LSFT(_RF),
-    Equal, Minus, Caret, Dollar, _, _, _, Tilda, Dot, Comma, Quote, DQuote,
-    _RT, Percent, Hash, At, _, _, _, Grave, Colon, Semicolon, Plus, _RF,
+    Equal, Minus, Caret, Dollar, CODE_TO, _, _, Tilda, Dot, Comma, Quote, DQuote,
+    _RT, Percent, Hash, At, CODE_ARRAY, _, _, Grave, Colon, Semicolon, Plus, _RF,
     _, _, _, Ampersand, Pipe,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
