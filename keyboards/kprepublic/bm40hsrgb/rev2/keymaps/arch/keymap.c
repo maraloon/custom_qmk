@@ -2,14 +2,14 @@
 
 enum layers {
   _ALPHA,
-  _WASD,
+  // _WASD,
   _SYMBOL,
   _NUMBER,
   _NAVIGATION,
   _TG,
-  _MOUSE,
+  // _MOUSE,
   _APP,
-  _RECTANGLE,
+  // _RECTANGLE,
 };
 
 enum my_keycodes {
@@ -223,15 +223,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
     _, _, _
 ),
-[_WASD] = LAYOUT_ortho_4x12_1x2uC(
-    Tab, _Q, _W, _E, _B, _, _, _J, _L, _U, _Y, _RZ,
-    Shift, KC_A, KC_S, KC_D, _G, _, _, _M, _A, _E, _I, TG(_WASD),
-    Shift, _, _, KC_C, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-    _, _,
-    MO(_APP), KC_C, Space,
-    __,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _, _, _
-),
+// [_WASD] = LAYOUT_ortho_4x12_1x2uC(
+//     Tab, _Q, _W, _E, _B, _, _, _J, _L, _U, _Y, _RZ,
+//     Shift, KC_A, KC_S, KC_D, _G, _, _, _M, _A, _E, _I, TG(_WASD),
+//     Shift, _, _, KC_C, _V, _, _, _K, _H, _RB, _RYU, _RJ,
+//     _, _,
+//     MO(_APP), KC_C, Space,
+//     __,
+//     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _, _, _
+// ),
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
     /*
      * KC_LBRC [ ] KC_RBRC
@@ -253,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
     _, RGB_TOG, LightDec, LightInc, _, _, _, _, _, _, _, _,
-    _, _, _, _, Vpn, _, _, _, WS_1, WS_2, WS_3, _,
+    _, _, _, _, _, _, _, _, WS_1, WS_2, WS_3, _,
     _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
@@ -263,27 +263,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
-    _, _,      SCUp,   _,         _, _, _, _,   _, _, _, _,
+    _, Monitor1, SCUp, Monitor2,         _, _, _, _,   _, _, _, _,
     _, SCLeft, SCDown, SCRight,   _, _, _, _,   _, _, _, _,
-    _, _, _,      _,      _,         _, _,   _, _, _, _, _,
+    _, _, _,      _,      Vpn,         _, _,   _, _, _, _, _,
     _, _, _,      _,      _,          __,    _, _, _, _, _
 ),
-[_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
-    _, Monitor1,  Fullscreen, Monitor2, _,  _, _, _,  _, _, _, _,
-    _, FPiP, ScratchpadMove, ScratchpadShow, _,  _, _, _,  _, _, _, _,
-    _, MPiP, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
-    _,  _, _, _, _, __, _, _, _,  _,  _
-),
-[_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
-    _,       _,     MUp,   _,         _, _, _, _, _, _, _, _,
-    RightClick, MLeft, MDown, MRight, _, _, _, _, MSpeed1, MSpeed2, _, TG(_MOUSE),
-    _, WheelUp, WheelDown, LeftClick,  _, _, _, _, _, _, _, _,
-    _, _, _,WheelLeft, WheelRight, __, _, _, _, _, _
-),
+// [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
+//     _, Monitor1,  Fullscreen, Monitor2, _,  _, _, _,  _, _, _, _,
+//     _, FPiP, ScratchpadMove, ScratchpadShow, _,  _, _, _,  _, _, _, _,
+//     _, MPiP, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
+//     _,  _, _, _, _, __, _, _, _,  _,  _
+// ),
+// [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
+//     _,       _,     MUp,   _,         _, _, _, _, _, _, _, _,
+//     RightClick, MLeft, MDown, MRight, _, _, _, _, MSpeed1, MSpeed2, _, TG(_MOUSE),
+//     _, WheelUp, WheelDown, LeftClick,  _, _, _, _, _, _, _, _,
+//     _, _, _,WheelLeft, WheelRight, __, _, _, _, _, _
+// ),
 };
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    uint8_t layer = get_highest_layer(layer_state);
+    // uint8_t layer = get_highest_layer(layer_state);
 
     for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
         for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
@@ -291,12 +291,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
             if (index >= led_min && index < led_max && index != NO_LED) {
 
-                uint8_t status = g_led_config.matrix_co[0][5];
-                switch (layer) {
-                case _MOUSE:
-                    rgb_matrix_set_color(status, 20, 20, 0);
-                    break;
-                }
+                // uint8_t status = g_led_config.matrix_co[0][5];
+                // switch (layer) {
+                // case _MOUSE:
+                //     rgb_matrix_set_color(status, 20, 20, 0);
+                //     break;
+                // }
 
                 if (col == 5 || col == 6) {
                     rgb_matrix_set_color(index, 0, 0, 0);
