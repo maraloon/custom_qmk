@@ -218,8 +218,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, QK_AREP, _, _K, _H, _RB, _RYU, _RJ,
     _, _,
-    _, LT(_NUMBER, Backspace), LT(_APP, Space),
-    MT(MOD_LSFT, Space),
+    _, LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
+    MO(_APP),
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _,
     _, _
 ),
@@ -247,7 +247,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
     _, BackSlash, Slash, Asterisk,   _, _, _, _,   Exlm, Question, Underscore, _,
     Equal, Minus, Caret, Dollar, Ampersand, _, _, Tilda,   Dot, Comma, Quote, DQuote,
-    _, Percent, Hash, At, Pipe, _, _, Grave,   Colon, Semicolon, Plus, _,
+    _RT, Percent, Hash, At, Pipe, _, _, Grave,   Colon, Semicolon, Plus, _RF,
     _, _, _, _, _,  _,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
