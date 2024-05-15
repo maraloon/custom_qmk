@@ -238,15 +238,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * KC_LT < > KC_GT
      */
     KC_LPRN, KC_RPRN,  _0, _, _, _, _, _, _, _9, KC_LCBR, KC_RCBR,
-    _, _1, _2, _3, _, _, _, _, _5, _6, _8, _,
-    _, KC_LT,  KC_GT, _4, _, _, _, _, _7, KC_LBRC, KC_RBRC, _,
+    _, _1, _2, _3, _, _, _, _, _5, _6, _8, CODE_TO,
+    _, KC_LT,  KC_GT, _4, _, _, _, _, _7, KC_LBRC, KC_RBRC, CODE_ARRAY,
     _,  _,  _, _,  _, __, NewLine, Lang, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
     LSFT(_RT), BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, LSFT(_RF),
-    Equal, Minus, Caret, Dollar, CODE_TO, _, _, Tilda, Dot, Comma, Quote, DQuote,
-    _RT, Percent, Hash, At, CODE_ARRAY, _, _, Grave, Colon, Semicolon, Plus, _RF,
-    _, _, _, Ampersand, Pipe,  __,  _, _,  _, _, _
+    Equal, Tilda, Caret, Dollar, _, _, _, Ampersand, Dot, Comma, Quote, DQuote,
+    _RT, Percent, Hash, At, _, _, _, Pipe, Colon, Semicolon, Grave, _RF,
+    _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
