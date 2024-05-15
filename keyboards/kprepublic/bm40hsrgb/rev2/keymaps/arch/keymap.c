@@ -255,15 +255,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    _, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
+    Fullscreen, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
     Home, Left, Down,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, MO(_TG),
-    _, WheelUp, WheelDown, Tab, _, _, _, _,   Browser, Chat, Term,  _,
+    _, WheelUp, WheelDown, Tab, Vpn, _, _, _,   Browser, Chat, Term,  WS_3,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
     _, Monitor1, SCUp, Monitor2,         _, _, _, _,   _, _, _, _,
-    Fullscreen, SCLeft, SCDown, SCRight,   _, _, _, _,   _, _, _, _,
-    _, WS_1, WS_2, WS_3, Vpn,         _, _,   _, _, _, _, _,
+    _, SCLeft, SCDown, SCRight,   _, _, _, _,   _, _, _, _,
+    _, _, _, _, _,         _, _,   _, _, _, _, _,
     _, _, _,      _,      _,          __,    _, _, _, _, _
 ),
 // [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
