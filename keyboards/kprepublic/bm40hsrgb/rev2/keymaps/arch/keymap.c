@@ -215,9 +215,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-    _, _, _,
+    _, _, MO(_APP),
     LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
-    MO(_APP),
+    _,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
     _, _, _
 ),
@@ -249,9 +249,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, _, SoundDec, SoundInc, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
-    _, RGB_TOG, LightDec, LightInc, _, _, _, _, _, _, _, _,
-    _, _, _, _, _, _, _, _, _, _, _, _,
+    _, _, _, _, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
+    _, _, _, _, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
+    _, _, _, _, _, _, _, _, RGB_TOG, _, _, _,
     _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
