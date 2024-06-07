@@ -92,7 +92,7 @@ enum my_keycodes {
 #define Delete KC_DEL
 #define Command KC_LCMD
 #define NextWindow LCMD(KC_GRV)
-#define Lang KC_CAPS
+#define Lang LSFT(KC_CAPS)
 #define Control KC_LCTL
 #define Alt KC_LALT
 #define Shift KC_LSFT
@@ -220,7 +220,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
     _, _, MO(_APP),
-    LT(_NUMBER, Backspace), MT(MOD_LSFT, Space),
+    LT(_NUMBER, Backspace), Space,
     _,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
     _, _, _
@@ -241,10 +241,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * KC_LCBR { } KC_RCBR
      * KC_LT < > KC_GT
      */
-    KC_LPRN, KC_RPRN,  _0, _, _, _, _, _, _, _9, KC_LCBR, KC_RCBR,
+    KC_LPRN, KC_RPRN,  _0, _, _, _, _, _, KC_CAPS, _9, KC_LCBR, KC_RCBR,
     _, _1, _2, _3, _, _, _, _, _5, _6, _8, CODE_TO,
     _, KC_LT,  KC_GT, _4, _, _, _, _, _7, KC_LBRC, KC_RBRC, CODE_ARRAY,
-    _,  _,  _, _,  _, __, NewLine, Lang, _, _, _
+    _,  _,  _, _,  _, __, NewLine, Tab, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
     LSFT(_RT), BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, LSFT(_RF),
@@ -261,7 +261,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     Fullscreen, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
     Home, Left, Down,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, MO(_TG),
-    _, WheelUp, WheelDown, Tab, Vpn, _, _, _,   Browser, Chat, Term,  WS_3,
+    _, WheelUp, WheelDown, Lang, Vpn, _, _, _,   Browser, Chat, Term,  WS_3,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
