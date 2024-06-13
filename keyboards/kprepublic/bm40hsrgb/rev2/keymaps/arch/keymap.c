@@ -9,6 +9,7 @@ enum layers {
   _TG,
   // _MOUSE,
   _APP,
+  _BRACES,
   // _RECTANGLE,
 };
 
@@ -220,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
     _, _, MO(_APP),
-    LT(_NUMBER, Backspace), Space,
+    LT(_NUMBER, Backspace), LT(_BRACES, Space),
     _,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
     _, _, _
@@ -235,15 +236,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _, _, _
 // ),
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
-    /*
-     * KC_LBRC [ ] KC_RBRC
-     * KC_LPRN ( ) KC_RPRN
-     * KC_LCBR { } KC_RCBR
-     * KC_LT < > KC_GT
-     */
-    KC_LPRN, KC_RPRN,  _0, _, _, _, _, _, KC_CAPS, _9, KC_LCBR, KC_RCBR,
+    _, _,  _0, _, _, _, _, _, _, _9, _, _,
     _, _1, _2, _3, _, _, _, _, _5, _6, _8, CODE_TO,
-    _, KC_LT,  KC_GT, _4, _, _, _, _, _7, KC_LBRC, KC_RBRC, CODE_ARRAY,
+    _, _,  _, _4, _, _, _, _, _7, _, _, CODE_ARRAY,
     _,  _,  _, _,  _, __, NewLine, Tab, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
@@ -257,6 +252,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, _, _, _, RGB_TOG, _, _, _,
     _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
+),
+    /*
+     * KC_LBRC [ ] KC_RBRC
+     * KC_LPRN ( ) KC_RPRN
+     * KC_LCBR { } KC_RCBR
+     * KC_LT < > KC_GT
+     */
+[_BRACES] = LAYOUT_ortho_4x12_1x2uC(
+    _, _, KC_LBRC, KC_RBRC, _, _, _, _, _, _, _, _,
+    _, _, KC_LPRN, KC_RPRN, _, _, _, _, KC_LCBR, KC_RCBR, _, _,
+    _, _, _, KC_CAPS, _, _, _, _,             KC_LT, KC_GT, _, _,
+    _, _, _, _, _, __, _, _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     Fullscreen, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
