@@ -248,10 +248,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    _, _, _, _, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
+    KC_KB_POWER, QK_BOOT, _, _, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
     _, _, _, _, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, _, _, _, RGB_TOG, _, _, _,
-    _, _, _, _, _, __, _, _, _, QK_BOOT, KC_KB_POWER
+    _, _, _, _, _, __, _, _, _, _, _
 ),
     /*
      * KC_LBRC [ ] KC_RBRC
@@ -260,10 +260,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * KC_LT < > KC_GT
      */
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
-    _, _, KC_LBRC, KC_RBRC, _, _, _, _, _, _, _, _,
-    _, _, KC_LPRN, KC_RPRN, _, _, _, _, KC_LCBR, KC_RCBR, _, _,
-    _, _, _, KC_CAPS, _, _, _, _,             KC_LT, KC_GT, _, _,
-    _, _, _, _, _, __, _, _, _, _, _
+    _, _, KC_LBRC, KC_RBRC, PrntSc1, _, _, _, KC_LCBR, KC_RCBR, _, KC_CAPS,
+    _, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Pass, Commands,
+    _, _, _, _, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
+    _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     Fullscreen, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
