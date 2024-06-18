@@ -248,9 +248,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, QK_BOOT, _, _, _, _, _, _, PrntSc1, PrntSc2, PrntSc3, _,
-    _, _, _, _, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
-    _, _, _, _, _, _, _, _, RGB_TOG, _, _, _,
+    KC_KB_POWER, QK_BOOT, _, _, _, _, _, _, _, _, _, _,
+    _, _, _, _, _, _, _, _, _, _, _, _,
+    _, _, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _, __, _, _, _, _, _
 ),
     /*
@@ -266,7 +266,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    Fullscreen, PgUp, Up,        PgDn,    _, _, _, _, Menu, Buffer, Pass, Commands,
+    Fullscreen, PgUp, Up,        PgDn,    _, _, _, _, _, _, _, _,
     Home, Left, Down,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, MO(_TG),
     _, WheelUp, WheelDown, Lang, Vpn, _, _, _,   Browser, Chat, Term,  WS_3,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
