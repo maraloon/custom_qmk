@@ -2,7 +2,6 @@
 
 enum layers {
   _ALPHA,
-  // _WASD,
   _SYMBOL,
   _NUMBER,
   _NAVIGATION,
@@ -226,15 +225,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
     _, _, _
 ),
-// [_WASD] = LAYOUT_ortho_4x12_1x2uC(
-//     Tab, _Q, _W, _E, _B, _, _, _J, _L, _U, _Y, _RZ,
-//     Shift, KC_A, KC_S, KC_D, _G, _, _, _M, _A, _E, _I, TG(_WASD),
-//     Shift, _, _, KC_C, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-//     _, _,
-//     MO(_APP), KC_C, Space,
-//     __,
-//     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _, _, _
-// ),
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
     _, _,  _0, _, _, _, _, _, _, _9, _, _,
     _, _1, _2, _3, _, _, _, _, _5, _6, _8, CODE_TO,
