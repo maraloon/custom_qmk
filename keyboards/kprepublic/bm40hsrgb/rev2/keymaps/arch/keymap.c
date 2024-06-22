@@ -207,12 +207,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
-#define _RF RALT(KC_1)  // ф
-#define _RJ RALT(KC_3)  // ж
-#define _RZ RALT(KC_4)  // з
-#define _RT RALT(KC_5)  // ъ
-#define _RB RALT(KC_7)  // б
-#define _RYU RALT(KC_8) // ю
+#define _RF KC_KP_1  // ф
+#define _RJ KC_KP_2  // ж
+#define _RZ KC_KP_3  // з
+#define _RT KC_KP_4  // ъ
+#define _RB KC_KP_5  // б
+#define _RYU KC_KP_6 // ю
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ALPHA] = LAYOUT_ortho_4x12_1x2uC(
@@ -228,13 +228,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
     _, _,  _0, _, _, _, _, _, _, _9, _, _,
     _, _1, _2, _3, _, _, _, _, _5, _6, _8, CODE_TO,
-    _, _,  _, _4, _, _, _, _, _7, _, _, CODE_ARRAY,
-    _,  _,  _, _,  _, __, NewLine, Tab, _, _, _
+    _, _,  Tab, _4, _, _, _, _, _7, Ampersand, Pipe, CODE_ARRAY,
+    _,  _,  _, _,  _, __, Up, Down, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
-    LSFT(_RT), BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, LSFT(_RF),
-    Equal, Tilda, Caret, Dollar, _, _, _, Ampersand, Dot, Comma, Quote, DQuote,
-    _RT, Percent, Hash, At, _, _, _, Pipe, Colon, Semicolon, Grave, _RF,
+    _, BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, _,
+    Equal, Tilda, Caret, Dollar, _, _, _, _, Dot, Comma, Quote, DQuote,
+    _, Percent, Hash, At, _, _, _, _, Colon, Semicolon, Grave, _,
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
@@ -252,7 +252,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
     _, _, KC_LBRC, KC_RBRC, PrntSc1, _, _, _, KC_LCBR, KC_RCBR, _, KC_CAPS,
     _, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Pass, Commands,
-    _, _, _, _, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
+    _, _, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
