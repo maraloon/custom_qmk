@@ -238,7 +238,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, QK_BOOT, _, _, _, _, _, _, _, _, _, _,
+    KC_KB_POWER, _, _, _, _, _, _, _, _, _, _, QK_BOOT,
     _, _, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _, __, _, _, _, _, _
