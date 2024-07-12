@@ -142,6 +142,7 @@ enum my_keycodes {
 #define PrntSc1 HYPR(KC_1)
 #define PrntSc2 HYPR(KC_2)
 #define PrntSc3 HYPR(KC_3)
+#define Rec HYPR(KC_5)
 
 #define NewLine LSFT(Enter)
 
@@ -253,7 +254,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * KC_LT < > KC_GT
      */
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
-    MuteNotify, _, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, KC_CAPS,
+    MuteNotify, Rec, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, KC_CAPS,
     AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Pass, Commands,
     Mute, _, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
