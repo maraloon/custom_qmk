@@ -6,10 +6,8 @@ enum layers {
   _NUMBER,
   _NAVIGATION,
   _TG,
-  // _MOUSE,
   _APP,
   _BRACES,
-  // _RECTANGLE,
 };
 
 enum my_keycodes {
@@ -273,18 +271,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _,         _, _,   _, _, _, _, _,
     _, _, _,      _,      _,          __,    _, _, _, _, _
 ),
-// [_RECTANGLE] = LAYOUT_ortho_4x12_1x2uC(
-//     _, Monitor1,  Fullscreen, Monitor2, _,  _, _, _,  _, _, _, _,
-//     _, FPiP, ScratchpadMove, ScratchpadShow, _,  _, _, _,  _, _, _, _,
-//     _, MPiP, MakeFloat, MoveFloat, _, _, _, _, _, _, _, _,
-//     _,  _, _, _, _, __, _, _, _,  _,  _
-// ),
-// [_MOUSE] = LAYOUT_ortho_4x12_1x2uC(
-//     _,       _,     MUp,   _,         _, _, _, _, _, _, _, _,
-//     RightClick, MLeft, MDown, MRight, _, _, _, _, MSpeed1, MSpeed2, _, TG(_MOUSE),
-//     _, WheelUp, WheelDown, LeftClick,  _, _, _, _, _, _, _, _,
-//     _, _, _,WheelLeft, WheelRight, __, _, _, _, _, _
-// ),
 };
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
