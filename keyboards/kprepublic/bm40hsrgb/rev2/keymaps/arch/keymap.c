@@ -147,7 +147,7 @@ enum my_keycodes {
 
 #define Menu HYPR(Space)
 #define Buffer HYPR(KC_V)
-#define Pass HYPR(KC_F)
+// #define Pass HYPR(KC_F)
 #define Commands HYPR(KC_O)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
 #define MPiP LCAG(KC_X) // mpv float
@@ -265,15 +265,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * KC_LT < > KC_GT
      */
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
-    MuteNotify, Rec, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, KC_CAPS,
-    AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Pass, Commands,
+    MuteNotify, Rec, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, Vpn,
+    AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, _, Commands,
     Mute, _, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
     Fullscreen, PgUp, _,        PgDn,    _, _, _, _, _, _, _, _,
     Home, _, Left,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, MO(_TG),
-    _, WheelUp, WheelDown, Lang, Vpn, _, _, _,   Browser, Chat, Term,  WS_3,
+    _, WheelUp, WheelDown, Lang, KC_CAPS, _, _, _,   Browser, Chat, Term,  WS_3,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
