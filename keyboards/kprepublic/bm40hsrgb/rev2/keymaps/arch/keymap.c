@@ -69,8 +69,6 @@ enum my_keycodes {
 
 #define SCUp LSFT(LCTL(Up))
 #define SCDown LSFT(LCTL(Down))
-#define SCLeft LSFT(LCTL(Left))
-#define SCRight LSFT(LCTL(Right))
 
 #define LeftClick KC_BTN1
 #define RightClick KC_BTN2
@@ -171,8 +169,6 @@ enum my_keycodes {
 #define ScratchpadMove LCAG(KC_S)
 #define ScratchpadShow LCAG(KC_T)
 #define Fullscreen KC_F11
-#define Monitor1 LCAG(KC_1)
-#define Monitor2 LCAG(KC_2)
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -272,14 +268,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    Fullscreen, PgUp, _,        PgDn,    _, _, _, _, _, _, _, _,
-    Home, _, Left,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, MO(_TG),
+    Fullscreen, PgUp, _,        PgDn,    _, _, _, _, _, MO(_TG), _, _,
+    Home, _, Left,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, _,
     _, WheelUp, WheelDown, Lang, KC_CAPS, _, _, _,   Browser, Chat, Term,  WS_3,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
 ),
 [_TG] = LAYOUT_ortho_4x12_1x2uC(
-    _, Monitor1, SCUp, Monitor2,         _, _, _, _,   _, _, _, _,
-    _, SCLeft, SCDown, SCRight,   _, _, _, _,   _, _, _, _,
+    _, _, _, _,         _, _, _, _,   _, _, _, _,
+    _, _, SCUp, SCDown,   _, _, _, _,   _, _, _, _,
     _, _, _, _, _,         _, _,   _, _, _, _, _,
     _, _, _,      _,      _,          __,    _, _, _, _, _
 ),
