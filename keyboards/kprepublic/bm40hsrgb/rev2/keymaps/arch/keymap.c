@@ -140,7 +140,9 @@ enum my_keycodes {
 #define PrntSc1 HYPR(KC_1)
 #define PrntSc2 HYPR(KC_2)
 #define PrntSc3 HYPR(KC_3)
+#define Vpn HYPR(KC_4)
 #define Rec HYPR(KC_5)
+#define Restart HYPR(KC_7)
 
 #define NewLine LSFT(Enter)
 
@@ -154,7 +156,6 @@ enum my_keycodes {
 #define Browser HYPR(KC_R)
 #define Term HYPR(KC_S)
 #define Chat HYPR(KC_T)
-#define Vpn HYPR(KC_4)
 
 #define WS_1 HYPR(KC_X)
 #define WS_2 HYPR(KC_C)
@@ -250,7 +251,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, _, _, _, _, _, _, _, _, _, _, QK_BOOT,
+    KC_KB_POWER, Restart, _, _, _, _, _, _, _, _, _, QK_BOOT,
     _, _, _, TG(_ALPHA2), _, _, _, _, _, _, _, _,
     _, _, _, _, _, _, _, _, _, _, _, _,
     _, _, _, _, _, __, _, _, _, _, _
