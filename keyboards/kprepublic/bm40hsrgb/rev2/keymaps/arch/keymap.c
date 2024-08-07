@@ -264,7 +264,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
     MuteNotify, DismissNotification, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, Vpn,
-    AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, _, Commands,
+    AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Commands, _,
     Mute, Rec, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
