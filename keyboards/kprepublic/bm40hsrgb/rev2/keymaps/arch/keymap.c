@@ -269,7 +269,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    Fullscreen, PgUp, _,        PgDn,    _, _, _, _, _, MO(_TG), _, _,
+    _, PgUp, Fullscreen,        PgDn,    _, _, _, _, _, MO(_TG), _, _,
     Home, _, Left,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, _,
     _, WheelUp, WheelDown, Lang, KC_CAPS, _, _, _,   Browser, Chat, Term,  WS_3,
     _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
