@@ -304,10 +304,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                     if (col == 0 || col == 1 || col == 5 || col == 10 || col == 11) {
                         rgb_matrix_set_color(index, 0, 0, 0);
                     } else {
-                        rgb_matrix_set_color(index, 40, 20, 0);
+                        // rgb_matrix_set_color(index, 40, 20, 0);
+                        rgb_matrix_set_color(index, 100, 10, 0);
                     }
                 } else {
-                    rgb_matrix_set_color(index, 40, 0, 40);
+                    // rgb_matrix_set_color(index, 40, 0, 40);
+                    rgb_matrix_set_color(index, 100, 10, 0);
                 }
 
             }
