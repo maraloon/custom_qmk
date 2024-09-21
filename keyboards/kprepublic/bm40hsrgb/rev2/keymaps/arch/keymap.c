@@ -2,7 +2,7 @@
 
 enum layers {
   _ALPHA,
-  _ALPHA2,
+  // _ALPHA2,
   _SYMBOL,
   _NUMBER,
   _NAVIGATION,
@@ -135,7 +135,7 @@ enum my_keycodes {
 #define Mute KC_KB_MUTE
 #define AudioMicMute KC_F20
 #define MuteNotify HYPR(KC_0)
-#define DismissNotification HYPR(KC_6)
+#define NoNotify HYPR(KC_6)
 
 #define PrntSc1 HYPR(KC_1)
 #define PrntSc2 HYPR(KC_2)
@@ -222,26 +222,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-    _, _, MO(_APP),
-    LT(_NUMBER, Backspace), LT(_BRACES, Space),
+    _, _,
+    MO(_BRACES), LT(_NUMBER, Backspace), SFT_T(Space),
     _,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
-    _, _, _
+    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _,
+    _, _
 ),
-[_ALPHA2] = LAYOUT_ortho_4x12_1x2uC(
-    _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
-    _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
-    _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-    _, _, MO(_APP),
-    LT(_NUMBER, Backspace), Space,
-    _,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
-    _, _, _
-),
+// [_ALPHA2] = LAYOUT_ortho_4x12_1x2uC(
+//     _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
+//     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
+//     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
+//     _, _, MO(_APP),
+//     LT(_NUMBER, Backspace), Space,
+//     _,
+//     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
+//     _, _, _
+// ),
 [_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
     _, _,  _0, _, _, _, _, _, _, _9, _, _,
-    _, _1, _2, _3, _, _, _, _, _5, _6, _8, CODE_TO,
-    _, _,  Tab, _4, _, _, _, _, _7, Ampersand, Pipe, CODE_ARRAY,
+    _, _1, _2, _3, _, _, _, _, _5, _6, _8, Up,
+    _, _,  Tab, _4, _, _, _, _, _7, _, _, _,
     _,  _,  _, _,  _, __, Up, Down, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
@@ -250,36 +250,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, Percent, Hash, At, _, _, _, _, Colon, Semicolon, Grave, _,
     _, _, _, Minus, Plus,  __,  _, _,  _, _, _
 ),
-[_APP] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, Restart, _, _, _, _, _, _, _, _, _, QK_BOOT,
-    _, _, _, TG(_ALPHA2), _, _, _, _, _, _, _, _,
-    _, _, _, _, _, _, _, _, _, _, _, _,
-    _, _, _, _, _, __, _, _, _, _, _
-),
+// [_APP] = LAYOUT_ortho_4x12_1x2uC(
+//     KC_KB_POWER, Restart, _, _, _, _, _, _, _, _, _, QK_BOOT,
+//     _, _, _, TG(_ALPHA2), _, _, _, _, _, _, _, _,
+//     _, _, _, _, _, _, _, _, _, _, _, _,
+//     _, _, _, _, _, __, _, _, _, _, _
+// ),
     /*
      * KC_LBRC [ ] KC_RBRC
      * KC_LPRN ( ) KC_RPRN
      * KC_LCBR { } KC_RCBR
      * KC_LT < > KC_GT
      */
+// [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
+//     MuteNotify, DismissNotification, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, Vpn,
+//     AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Commands, _,
+//     Mute, Rec, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
+//     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
+// ),
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
-    MuteNotify, DismissNotification, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, Vpn,
-    AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Commands, _,
-    Mute, Rec, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
+    KC_KB_POWER, Restart , Ampersand, Pipe, _, _, _, _, KC_LBRC, KC_RBRC, _, QK_BOOT,
+    _, _, CODE_TO,CODE_ARRAY, _, _, _, _, KC_LPRN, KC_RPRN, _, _,
+    _, _, _RT, _RF, _, _, _, _, KC_LCBR, KC_RCBR, _, _,
     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
 ),
+[_APP] = LAYOUT_ortho_4x12_1x2uC(
+    _, _, Rec, _, _, _, _, _, PrntSc1, PrntSc2,PrntSc3, _,
+    AudioMicMute,Mute,MuteNotify,   NoNotify, _, _, _, _, Menu,    Buffer,  Commands,Vpn,
+    _, _, _, _, _, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
+    _, _, _, _, _, __, _, _, _, _, _
+),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    _, PgUp, Fullscreen,        PgDn,    _, _, _, _, _, MO(_TG), _, _,
-    Home, _, Left,      Right,   End,  _, _, _, PrevApp, NextWindow, Tmux, _,
+    Home, End, PgUp, PgDn,    _, _, _, _, SCUp, SCDown, _, _,
+    _, _, Left,      Right,   _,  _, _, _, PrevApp, NextWindow, Tmux, _,
     _, WheelUp, WheelDown, Lang, KC_CAPS, _, _, _,   Browser, Chat, Term,  WS_3,
-    _,    _,    _,    Delete,    DELETE_LINE, __, _, _, _, _, _
+    _,    _,    _,    MO(_APP),    DELETE_LINE, __, _, _, _, _, _
 ),
-[_TG] = LAYOUT_ortho_4x12_1x2uC(
-    _, _, _, _,         _, _, _, _,   _, _, _, _,
-    _, _, SCUp, SCDown,   _, _, _, _,   _, _, _, _,
-    _, _, _, _, _,         _, _,   _, _, _, _, _,
-    _, _, _,      _,      _,          __,    _, _, _, _, _
-),
+// [_TG] = LAYOUT_ortho_4x12_1x2uC(
+//     _, _, _, _,         _, _, _, _,   _, _, _, _,
+//     _, _, SCUp, SCDown,   _, _, _, _,   _, _, _, _,
+//     _, _, _, _, _,         _, _,   _, _, _, _, _,
+//     _, _, _,      _,      _,          __,    _, _, _, _, _
+// ),
 };
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
