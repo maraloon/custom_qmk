@@ -225,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _,
     MO(_BRACES), LT(_NUMBER, Backspace), SFT_T(Space),
     _,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), _,
+    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP),
     _, _
 ),
 // [_ALPHA2] = LAYOUT_ortho_4x12_1x2uC(
