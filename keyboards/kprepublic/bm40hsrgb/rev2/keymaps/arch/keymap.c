@@ -163,7 +163,7 @@ enum my_keycodes {
 
 #define PrevApp LALT(KC_TAB)
 
-#define Tmux LCTL(KC_A)
+#define Tmux LCTL(KC_Z)
 
 #define MakeFloat LCAG(KC_C)
 #define MoveFloat LCAG(KC_D)
@@ -276,8 +276,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     RGB_TOG, _, Rec, _, _, _, _, _, PrntSc1, PrntSc2,PrntSc3, _,
-    AudioMicMute,Mute,MuteNotify,   NoNotify, _, _, _, _, Menu,    Buffer,  Commands,Vpn,
-    _, _, _, _, _, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
+    AudioMicMute,Mute,MuteNotify, NoNotify, _, _, _, _, Menu, _, _, _,
+    _, _, Commands, Vpn, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
     _, _, _, _, _, __, _, _, _, _, _
 ),
 [_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
