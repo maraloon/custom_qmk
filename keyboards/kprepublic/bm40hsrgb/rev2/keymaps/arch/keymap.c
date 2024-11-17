@@ -149,7 +149,7 @@ enum my_keycodes {
 #define Menu HYPR(Space)
 #define Buffer HYPR(KC_V)
 // #define Pass HYPR(KC_F)
-#define Commands HYPR(KC_O)
+#define Commands HYPR(KC_V)
 #define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
 #define MPiP LCAG(KC_X) // mpv float
 
