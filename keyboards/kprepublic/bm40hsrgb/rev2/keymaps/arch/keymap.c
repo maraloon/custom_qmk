@@ -224,6 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
     _, _,
     MO(_BRACES), LT(_NUMBER, Backspace), SFT_T(Space),
+    /*LT(_BRACES, Backspace), LT(_NUMBER, Space),  SFT_T(Tab),*/
     _,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP),
     _, _
@@ -242,13 +243,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _,  _0, _, _, _, _, _, _, _9, _, _,
     _, _1, _2, _3, _, _, _, _, _5, _6, _8, Up,
     _, _,  Tab, _4, _, _, _, _, _7, _, _, _,
-    _,  _,  _, _,  _, __, Up, Down, _, _, _
+    _,  _,  _, _,  _, __, _, Down, _, _, _
 ),
 [_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
-    _, BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, _,
-    Equal, Tilda, Caret, Dollar, _, _, _, _, Dot, Comma, Quote, DQuote,
-    _, Percent, Hash, At, _, _, _, _, Colon, Semicolon, Grave, _,
-    _, _, _, Minus, Plus,  __,  _, _,  _, _, _
+    Plus, BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, _,
+    Minus, Tilda, Caret, Dollar, Ampersand, _, _, _, Dot, Comma, Quote, DQuote,
+    Equal, Percent, Hash, At, Pipe, _, _, _, Colon, Semicolon, Grave, _,
+    _, _, _, _, _,  __,  _, _,  _, _, _
 ),
 // [_APP] = LAYOUT_ortho_4x12_1x2uC(
 //     KC_KB_POWER, Restart, _, _, _, _, _, _, _, _, _, QK_BOOT,
@@ -270,9 +271,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ),
 [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
     KC_KB_POWER, Restart , Ampersand, Pipe, _, _, _, _, KC_LBRC, KC_RBRC, _, QK_BOOT,
-    _, _, CODE_TO,CODE_ARRAY, _, _, _, _, KC_LPRN, KC_RPRN, _, _,
-    _, _, _RT, _RF, _, _, _, _, KC_LCBR, KC_RCBR, _, _,
-    _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
+    _, _, _,_, _, _, _, _, KC_LPRN, KC_RPRN, KC_LT, KC_GT,
+    _, _, _RT, _RF, _, _, _, _, KC_LCBR, KC_RCBR, CODE_TO,CODE_ARRAY,
+    _, _, _, _, _, __, _, _, _, _, _
 ),
 [_APP] = LAYOUT_ortho_4x12_1x2uC(
     RGB_TOG, _, Rec, _, _, _, _, _, PrntSc1, PrntSc2,PrntSc3, _,
