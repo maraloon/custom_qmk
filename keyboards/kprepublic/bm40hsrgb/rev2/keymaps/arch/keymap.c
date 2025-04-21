@@ -13,6 +13,7 @@ enum layers {
 
 enum my_keycodes {
   CODE_ARRAY = SAFE_RANGE,
+  ARM_MICRO,
   CODE_TO,
   DELETE_LINE,
 };
@@ -197,6 +198,13 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 uint16_t change_app_timer = 0;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case ARM_MICRO:
+      if (record->event.pressed) {
+          SEND_STRING(SS_TAP(X_F20));
+      } else {
+          SEND_STRING(SS_TAP(X_F20));
+      }
+      return false;
     case CODE_ARRAY:
       if (record->event.pressed) { SEND_STRING(" => "); } return false;
     case CODE_TO:
@@ -226,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _,
     MO(_BRACES), LT(_NUMBER, Backspace), SFT_T(Space),
     /*LT(_BRACES, Backspace), LT(_NUMBER, Space),  SFT_T(Tab),*/
-    _,
+    ARM_MICRO,
     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP),
     _, _
 ),
