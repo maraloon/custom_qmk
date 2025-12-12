@@ -172,61 +172,7 @@ enum my_keycodes {
 
 #define SpaceNUM LT(NUM, KC_SPC)
 #define EscSYM LT(SYM, KC_ESC)
-// #define DelWLayer LCTL(KC_BSPC)
 #define CtrlZ LCTL(KC_Z)
-
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case _T:
-        case _A:
-        case _S:
-        case _E:
-        case _D:
-        case _H:
-        case _F:
-        case _P:
-        case _L:
-        case _U:
-        case _N:
-        case _O:
-            // Do not select the hold action when another key is pressed.
-            return false;
-        default:
-            // Immediately select the hold action when another key is pressed.
-            return true;
-    }
-}
-
-uint16_t change_app_timer = 0;
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case ARM_MICRO:
-      if (record->event.pressed) {
-          SEND_STRING(SS_TAP(X_F20));
-      } else {
-          SEND_STRING(SS_TAP(X_F20));
-      }
-      return false;
-    case CODE_ARRAY:
-      if (record->event.pressed) { SEND_STRING(" => "); } return false;
-    case CODE_TO:
-      if (record->event.pressed) { SEND_STRING("->"); } return false;
-    case DELETE_LINE:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LSFT(SS_TAP(X_HOME)) SS_TAP(X_BSPC));
-      }
-      return false;
-    default:
-      return true; // Process all other keycodes normally
-  }
-}
-
-#define _RF KC_KP_1  // ф
-#define _RJ KC_KP_2  // ж
-#define _RZ KC_KP_3  // з
-#define _RT KC_KP_4  // ъ
-#define _RB KC_KP_5  // б
-#define _RYU KC_KP_6 // ю
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [ABC] = LAYOUT_ortho_4x12_1x2uC(
@@ -240,6 +186,273 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _, _
 ),
 };
+
+
+bool is_oneshot_cancel_key(uint16_t keycode) {
+    switch (keycode) {
+        case EscSYM:
+            return true;
+        default:
+            return false;
+    }
+}
+
+bool is_oneshot_ignored_key(uint16_t keycode) {
+    switch (keycode) {
+        case LANG:
+        case EscSYM:
+        case OS_SHFT:
+        case OS_CTRL:
+        case OS_ALT:
+        case OS_CMD:
+            return true;
+        default:
+            return false;
+    }
+}
+
+oneshot_state os_shft_state = os_up_unqueued;
+oneshot_state os_ctrl_state = os_up_unqueued;
+oneshot_state os_alt_state  = os_up_unqueued;
+oneshot_state os_cmd_state  = os_up_unqueued;
+
+void with_mods_state_recover(void (*callback)(void)) {
+    uint8_t mod_state    = get_mods();
+    uint8_t os_mod_state = get_oneshot_mods();
+    clear_mods();
+    clear_oneshot_mods();
+
+    callback();
+
+    set_mods(mod_state);
+    set_oneshot_mods(os_mod_state);
+}
+
+void switch_to_english(void) {
+    SEND_STRING(SS_TAP(X_F13));
+    layer_move(ABC);
+};
+void switch_to_russian(void) {
+    SEND_STRING(SS_TAP(X_F14));
+    layer_move(RUS);
+};
+
+void send_os_alt_hold(void) {
+    SEND_STRING(SS_TAP(X_F15));
+}
+void send_os_alt_release(void) {
+    SEND_STRING(SS_TAP(X_F16));
+}
+void send_os_ctrl_hold(void) {
+    SEND_STRING(SS_TAP(X_F17));
+}
+void send_os_ctrl_release(void) {
+    SEND_STRING(SS_TAP(X_F18));
+}
+void send_os_shift_hold(void) {
+    SEND_STRING(SS_TAP(X_F22));
+}
+void send_os_shift_release(void) {
+    SEND_STRING(SS_TAP(X_F23));
+}
+
+void send_os_osm_state(uint16_t osm_key_state, bool hold) {
+    switch (osm_key_state) {
+        case KC_LALT:
+            if (hold == true) {
+                with_mods_state_recover(send_os_alt_hold);
+            } else {
+                with_mods_state_recover(send_os_alt_release);
+            }
+            break;
+        case KC_LCTL:
+            if (hold == true) {
+                with_mods_state_recover(send_os_ctrl_hold);
+            } else {
+                with_mods_state_recover(send_os_ctrl_release);
+            }
+            break;
+        case KC_LSFT:
+            if (hold == true) {
+                with_mods_state_recover(send_os_shift_hold);
+            } else {
+                with_mods_state_recover(send_os_shift_release);
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case S_PTR:
+        case T_PTR:
+        case F_FN:
+        case A_CMD:
+        case H_CMD:
+            // Do not select the hold action when another key is pressed.
+            return false;
+        default:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+    }
+}
+
+bool update_oneshot(oneshot_state *state, uint16_t mod, uint16_t trigger, uint16_t keycode, keyrecord_t *record) {
+    if (keycode == trigger) {
+        if (record->event.pressed) {
+            // Trigger keydown
+            if (*state == os_up_unqueued) {
+                register_code(mod);
+                send_os_osm_state(mod, true);
+            }
+            *state = os_down_unused;
+        } else {
+            // Trigger keyup
+            switch (*state) {
+                case os_down_unused:
+                    // If we didn't use the mod while trigger was held, queue it.
+                    *state = os_up_queued;
+                    break;
+                case os_down_used:
+                    // If we did use the mod while trigger was held, unregister it.
+                    *state = os_up_unqueued;
+                    unregister_code(mod);
+                    send_os_osm_state(mod, false);
+                default:
+                    break;
+            }
+        }
+    } else {
+        if (record->event.pressed) {
+            if (record->tap.count) { // Need for LT keys
+                if (is_oneshot_cancel_key(keycode) && *state != os_up_unqueued) {
+                    // Cancel oneshot on designated cancel keydown.
+                    *state = os_up_unqueued;
+                    unregister_code(mod);
+                    send_os_osm_state(mod, false);
+                    return false;
+                }
+            }
+        } else {
+            if (!is_oneshot_ignored_key(keycode)) {
+                // On non-ignored keyup, consider the oneshot used.
+                switch (*state) {
+                    case os_down_unused:
+                        *state = os_down_used;
+                        break;
+                    case os_up_queued:
+                        *state = os_up_unqueued;
+                        unregister_code(mod);
+                        send_os_osm_state(mod, false);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+uint16_t change_app_timer = 0;
+bool     process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // clang-format off
+    bool result1 = update_oneshot(&os_shft_state, KC_LSFT, OS_SHFT, keycode,
+  record);
+    bool result2 = update_oneshot(&os_ctrl_state, KC_LCTL, OS_CTRL, keycode,
+  record);
+    bool result3 = update_oneshot(&os_alt_state, KC_LALT, OS_ALT, keycode,
+  record);
+    bool result4 = update_oneshot(&os_cmd_state, KC_LCMD, OS_CMD, keycode,
+  record);
+
+    if (!result1 || !result2 || !result3 || !result4) {
+        return false;
+    }
+    // clang-format on
+
+    switch (keycode) {
+        case ARM_MICRO:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_F20));
+            } else {
+                SEND_STRING(SS_TAP(X_F20));
+            }
+            return false;
+        case CODE_ARRAY:
+            if (record->event.pressed) {
+                SEND_STRING(" => ");
+            }
+            return false;
+        case CODE_TO:
+            if (record->event.pressed) {
+                SEND_STRING("->");
+            }
+            return false;
+        case CODE_BR:
+            if (record->event.pressed) {
+                SEND_STRING(" {");
+                SEND_STRING(SS_TAP(X_ENT));
+                SEND_STRING(SS_TAP(X_ENT));
+                SEND_STRING("}");
+                SEND_STRING(SS_TAP(X_UP));
+                SEND_STRING(SS_TAP(X_TAB));
+            }
+            return false;
+        case CODEBLOCK:
+            if (record->event.pressed) {
+                SEND_STRING("```");
+            }
+            return false;
+        case DELETE_LINE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LSFT(SS_TAP(X_HOME)) SS_TAP(X_BSPC));
+            }
+            return false;
+        case CommaS:
+            if (record->event.pressed) {
+                SEND_STRING(", ");
+            }
+            return false;
+        case DotNS:
+            if (record->event.pressed) {
+                SEND_STRING(". ");
+                add_oneshot_mods(MOD_BIT(KC_LSFT));
+            }
+            return false;
+        case QuesNS:
+            if (record->event.pressed) {
+                SEND_STRING("? ");
+                add_oneshot_mods(MOD_BIT(KC_LSFT));
+            }
+            return false;
+        case ExlmNS:
+            if (record->event.pressed) {
+                SEND_STRING("! ");
+                add_oneshot_mods(MOD_BIT(KC_LSFT));
+            }
+            return false;
+        case LANG:
+            if (record->event.pressed) {
+                with_mods_state_recover(switch_to_russian);
+            } else {
+                with_mods_state_recover(switch_to_english);
+            }
+            return false;
+        case VOLTR:
+            if (record->event.pressed) {
+                trackball_volume = true;
+            } else {
+                trackball_volume = false;
+            }
+            return false;
+        default:
+            return true; // Process all other keycodes normally
+    }
+}
+
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     // uint8_t layer = get_highest_layer(layer_state);
@@ -276,3 +489,61 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     }
     return true;
 }
+
+// bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+//     for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
+//         for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
+//             uint8_t index = g_led_config.matrix_co[row][col];
+//
+//             if (os_alt_state == os_up_queued || os_ctrl_state == os_up_queued || os_shft_state == os_up_queued || os_cmd_state == os_up_queued) {
+//                 rgb_matrix_set_color(index, 0, 0, 0);
+//
+//                 if (os_alt_state == os_up_queued) {
+//                     if (row == 8) {
+//                         rgb_matrix_set_color(index, 250, 0, 0);
+//                     }
+//                 }
+//                 if (os_ctrl_state == os_up_queued) {
+//                     if (row == 8) {
+//                         rgb_matrix_set_color(index, 150, 150, 0);
+//                     }
+//                 }
+//                 if (os_shft_state == os_up_queued) {
+//                     if (row >= 9) {
+//                         rgb_matrix_set_color(index, 250, 0, 250);
+//                     }
+//                 }
+//                 if (os_cmd_state == os_up_queued) {
+//                     if (row == 9 && col == 1) {
+//                         rgb_matrix_set_color(index, 250, 0, 0);
+//                     }
+//                 }
+//             } else {
+//                 switch(get_highest_layer(layer_state|default_layer_state)) {
+//                     case 1:
+//                         if (row == 5 || col == 0) {
+//                             rgb_matrix_set_color(index, 250, 0, 250);
+//                         } else {
+//                             rgb_matrix_set_color(index, RGB_BLUE);
+//                         }
+//                         break;
+//                     case 2:
+//                         if (row == 5 || col == 0) {
+//                             rgb_matrix_set_color(index, 250, 30, 0);
+//                         } else {
+//                             rgb_matrix_set_color(index, RGB_RED);
+//                         }
+//                         break;
+//                     default:
+//                         if (row == 5 || col == 0) {
+//                             rgb_matrix_set_color(index, 250, 0, 250);
+//                         } else {
+//                             rgb_matrix_set_color(index, 250, 30, 0);
+//                         }
+//                         break;
+//                     }
+//             }
+//         }
+//     }
+//     return true;
+// }
