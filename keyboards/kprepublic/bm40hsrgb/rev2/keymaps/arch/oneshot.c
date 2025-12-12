@@ -6,7 +6,6 @@ bool update_oneshot(oneshot_state *state, uint16_t mod, uint16_t trigger, uint16
             // Trigger keydown
             if (*state == os_up_unqueued) {
                 register_code(mod);
-                is_alt = true;
             }
             *state = os_down_unused;
         } else {
@@ -20,7 +19,6 @@ bool update_oneshot(oneshot_state *state, uint16_t mod, uint16_t trigger, uint16
                     // If we did use the mod while trigger was held, unregister it.
                     *state = os_up_unqueued;
                     unregister_code(mod);
-                    is_alt = false;
                     break;
                 default:
                     break;
@@ -32,7 +30,6 @@ bool update_oneshot(oneshot_state *state, uint16_t mod, uint16_t trigger, uint16
                 // Cancel oneshot on designated cancel keydown.
                 *state = os_up_unqueued;
                 unregister_code(mod);
-                is_alt = false;
                 return false;
             }
         } else {
@@ -45,7 +42,6 @@ bool update_oneshot(oneshot_state *state, uint16_t mod, uint16_t trigger, uint16
                     case os_up_queued:
                         *state = os_up_unqueued;
                         unregister_code(mod);
-                        is_alt = false;
                         break;
                     default:
                         break;
