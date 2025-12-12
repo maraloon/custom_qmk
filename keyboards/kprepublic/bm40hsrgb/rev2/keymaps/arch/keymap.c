@@ -28,7 +28,6 @@ enum my_keycodes {
     ARM_MICRO,
     DELETE_LINE,
     LANG,
-    VOLTR,
 
     CommaS,
     DotNS,
@@ -439,13 +438,6 @@ bool     process_record_user(uint16_t keycode, keyrecord_t *record) {
                 with_mods_state_recover(switch_to_russian);
             } else {
                 with_mods_state_recover(switch_to_english);
-            }
-            return false;
-        case VOLTR:
-            if (record->event.pressed) {
-                trackball_volume = true;
-            } else {
-                trackball_volume = false;
             }
             return false;
         default:
