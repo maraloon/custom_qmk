@@ -1,5 +1,13 @@
 #include QMK_KEYBOARD_H
 
+// Represents the four states a oneshot key can be in
+typedef enum {
+    os_up_unqueued,
+    os_up_queued,
+    os_down_unused,
+    os_down_used,
+} oneshot_state;
+
 enum layers {
     ABC = 0,
     RTR, // RetroArch
@@ -13,10 +21,24 @@ enum layers {
 };
 
 enum my_keycodes {
-  CODE_ARRAY = SAFE_RANGE,
-  ARM_MICRO,
-  CODE_TO,
-  DELETE_LINE,
+    CODE_ARRAY = SAFE_RANGE,
+    CODE_TO,
+    CODE_BR,
+    CODEBLOCK,
+    ARM_MICRO,
+    DELETE_LINE,
+    LANG,
+    VOLTR,
+
+    CommaS,
+    DotNS,
+    QuesNS,
+    ExlmNS,
+
+    OS_SHFT,
+    OS_CTRL,
+    OS_ALT,
+    OS_CMD,
 };
 
 #undef _______
