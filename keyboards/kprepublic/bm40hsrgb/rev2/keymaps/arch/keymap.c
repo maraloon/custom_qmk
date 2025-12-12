@@ -1,14 +1,15 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-  _ALPHA,
-  // _ALPHA2,
-  _SYMBOL,
-  _NUMBER,
-  _NAVIGATION,
-  _TG,
-  _APP,
-  _BRACES,
+    ABC = 0,
+    RTR, // RetroArch
+    GRP, // Graphite
+    RUS,
+    NUM,
+    SYM,
+    BSYM,
+    PNTR,
+    FN,
 };
 
 enum my_keycodes {
@@ -20,37 +21,48 @@ enum my_keycodes {
 
 #undef _______
 #define _ KC_NO
-#define __ KC_NO
-#define ____ KC_NO
 #define _______ KC_NO
-#define ________________ KC_NO
 
-#define _Q KC_Q
-#define _W KC_W
-#define _F SFT_T(KC_F)
-#define _P SFT_T(KC_P)
-#define _B KC_B
-#define _J KC_J
-#define _L SFT_T(KC_L)
-#define _U SFT_T(KC_U)
-#define _Y KC_Y
-#define _N SFT_T(KC_N)
-#define _R KC_R
-#define _S CTL_T(KC_S)
-#define _T CMD_T(KC_T)
-#define _G KC_G
-#define _M KC_M
-#define _A CMD_T(KC_A)
-#define _E CTL_T(KC_E)
-#define _I KC_I
-#define _O SFT_T(KC_O)
-#define _Z KC_Z
-#define _X KC_X
-#define _C KC_C
-#define _D ALT_T(KC_D)
-#define _V KC_V
-#define _K KC_K
-#define _H ALT_T(KC_H)
+// WARN: danger
+#undef G
+#undef A
+#undef X
+#undef C
+#undef S
+
+#define Q KC_Q
+#define W KC_W
+
+#define F KC_F
+#define F_FN LT(FN, KC_F)
+#define P KC_P
+#define B KC_B
+#define J KC_J
+#define L KC_L
+#define U KC_U
+#define Y KC_Y
+#define N KC_N
+#define R KC_R
+#define S KC_S
+#define F KC_F
+#define S_PTR LT(PNTR, KC_S)
+#define T_PTR LT(PNTR, KC_T)
+#define T KC_T
+#define G KC_G
+#define M KC_M
+#define A KC_A
+#define A_CMD MT(MOD_LGUI, KC_A)
+#define H_CMD MT(MOD_LGUI, KC_H)
+#define E KC_E
+#define I KC_I
+#define O KC_O
+#define Z KC_Z
+#define X KC_X
+#define C KC_C
+#define D KC_D
+#define V KC_V
+#define K KC_K
+#define H KC_H
 
 #define _0 KC_0
 #define _1 KC_1
@@ -68,110 +80,78 @@ enum my_keycodes {
 #define Left KC_LEFT
 #define Right KC_RIGHT
 
-#define SCUp LSFT(LCTL(Up))
-#define SCDown LSFT(LCTL(Down))
-
-#define LeftClick KC_BTN1
-#define RightClick KC_BTN2
-#define WheelUp KC_MS_WH_UP
-#define WheelDown KC_MS_WH_DOWN
-#define WheelLeft KC_MS_WH_LEFT
-#define WheelRight KC_MS_WH_RIGHT
-#define MUp KC_MS_UP
-#define MDown KC_MS_DOWN
-#define MLeft KC_MS_LEFT
-#define MRight KC_MS_RIGHT
-#define MSpeed0 KC_MS_ACCEL0
-#define MSpeed1 KC_MS_ACCEL1
-#define MSpeed2 KC_MS_ACCEL2
+#define Bracket KC_LPRN
+#define bracket KC_RPRN
+#define Borrow KC_LCBR
+#define borrow KC_RCBR
+#define Array KC_LBRC
+#define array KC_RBRC
+#define Tag KC_LT
+#define tag KC_GT
 
 #define Space KC_SPC
-#define Backspace KC_BSPC
-#define Delete KC_DEL
-#define Command KC_LCMD
-#define NextWindow LCMD(KC_GRV)
-#define Lang LSFT(KC_CAPS)
-#define Control KC_LCTL
-#define Alt KC_LALT
-#define Shift KC_LSFT
+#define BSpace KC_BSPC
+#define DelWord LCTL(KC_BSPC)
 #define Enter KC_ENT
 #define Esc KC_ESC
 #define Tab KC_TAB
+
+#define Shift OS_SHFT
+#define SpaceShift SFT_T(KC_SPC)
+#define Ctrl OS_CTRL
+#define Cmd OS_CMD
+#define Alt OS_ALT
+#define Compose KC_RCTL
 
 #define PgDn KC_PGDN
 #define PgUp KC_PGUP
 #define Home KC_HOME
 #define End KC_END
 
-#define BackSlash KC_BSLS
+#define BSlash KC_BSLS
 #define Percent KC_PERC
-#define Asterisk KC_ASTR
+#define Star KC_ASTR
 #define At KC_AT
 #define Hash KC_HASH
 #define Tilda KC_TILD
 #define Grave KC_GRV
 #define Equal KC_EQL
-#define Underscore KC_UNDS
+#define Unds KC_UNDS
 #define Minus KC_MINS
 #define Plus KC_PLUS
 
 #define Exlm KC_EXLM
-#define Question KC_QUES
+#define Quest KC_QUES
 #define Slash KC_PSLS
-#define Ampersand KC_AMPR
+#define Amp KC_AMPR
 #define Dot KC_DOT
 #define Comma KC_COMM
 #define Quote KC_QUOT
 #define DQuote KC_DQUO
 #define Pipe KC_PIPE
-#define Colon KC_COLN
-#define Semicolon KC_SCLN
+#define DDot KC_COLN
+#define DComm KC_SCLN
 #define Caret KC_CIRC
 #define Dollar KC_DLR
 
-#define LightDec KC_BRID
-#define LightInc KC_BRIU
-#define SoundDec KC_VOLD
-#define SoundInc KC_VOLU
-#define Mute KC_KB_MUTE
-#define AudioMicMute KC_F20
-#define MuteNotify HYPR(KC_0)
-#define NoNotify HYPR(KC_6)
+#define VolUp KC_KB_VOLUME_UP
+#define VolDn KC_KB_VOLUME_DOWN
 
-#define PrntSc1 HYPR(KC_1)
-#define PrntSc2 HYPR(KC_2)
-#define PrntSc3 HYPR(KC_3)
-#define Vpn HYPR(KC_4)
-#define Rec HYPR(KC_5)
-#define Restart HYPR(KC_7)
+#define Leader LCMD(KC_L)
+// #define WS12 LCMD(KC_1)
+// #define WS04 LCMD(KC_0)
 
-#define NewLine LSFT(Enter)
+#define rF KC_KP_1 // ф
+#define rJ KC_KP_2 // ж
+#define rZ KC_KP_3 // з
+#define rT KC_KP_4 // ъ
+#define rH KC_KP_5 // х
+#define rU KC_KP_6 // ю
 
-#define Menu HYPR(Space)
-#define Buffer HYPR(KC_V)
-#define ModeControl HYPR(KC_8)
-// #define Pass HYPR(KC_F)
-#define Commands HYPR(KC_V)
-#define FPiP LCTL(LSFT(KC_RBRC)) // Firefox. Picture-in-Picture
-#define MPiP LCAG(KC_X) // mpv float
-
-#define Browser HYPR(KC_R)
-#define Term HYPR(KC_S)
-#define Chat HYPR(KC_T)
-
-#define WS_1 HYPR(KC_X)
-#define WS_2 HYPR(KC_C)
-#define WS_3 HYPR(KC_D)
-
-#define PrevApp LALT(KC_TAB)
-
-#define Tmux LCTL(KC_Z)
-
-#define MakeFloat LCAG(KC_C)
-#define MoveFloat LCAG(KC_D)
-#define ScratchpadMove LCAG(KC_S)
-#define ScratchpadShow LCAG(KC_T)
-#define Fullscreen KC_F11
+#define SpaceNUM LT(NUM, KC_SPC)
+#define EscSYM LT(SYM, KC_ESC)
+// #define DelWLayer LCTL(KC_BSPC)
+#define CtrlZ LCTL(KC_Z)
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -227,81 +207,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define _RYU KC_KP_6 // ю
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_ALPHA] = LAYOUT_ortho_4x12_1x2uC(
-    _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
-    _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
-    _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
+[ABC] = LAYOUT_ortho_4x12_1x2uC(
+    Q, W,  F_FN, P, B, _, _,         J, L, U, Y, CtrlZ,
+    N, R, S_PTR, T, G, Tab, Compose, M, A_CMD, E, I, O,
+    Z, X,     C, D, V, _, _,         K, H,     Alt, Ctrl, Leader,
     _, _,
-    MO(_BRACES), LT(_NUMBER, Backspace), SFT_T(Space),
-    /*LT(_BRACES, Backspace), LT(_NUMBER, Space),  SFT_T(Tab),*/
+    MO(BSYM), DelWord, SpaceNUM,
     ARM_MICRO,
-    LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc), MO(_APP),
+    Enter, EscSYM, LANG,
     _, _
 ),
-// [_ALPHA2] = LAYOUT_ortho_4x12_1x2uC(
-//     _Q, _W, _F, _P, _B, _, _, _J, _L, _U, _Y, _RZ,
-//     _N, _R, _S, _T, _G, _, _, _M, _A, _E, _I, _O,
-//     _Z, _X, _C, _D, _V, _, _, _K, _H, _RB, _RYU, _RJ,
-//     _, _, MO(_APP),
-//     LT(_NUMBER, Backspace), Space,
-//     _,
-//     LT(_SYMBOL, Enter), LT(_NAVIGATION, Esc),
-//     _, _, _
-// ),
-[_NUMBER] = LAYOUT_ortho_4x12_1x2uC(
-    _, _,  _0, _, _, _, _, _, _, _9, _, _,
-    _, _1, _2, _3, _, _, _, _, _5, _6, _8, Up,
-    _, _,  Tab, _4, _, _, _, _, _7, _, _, _,
-    _,  _,  _, _,  _, __, _, Down, _, _, _
-),
-[_SYMBOL] = LAYOUT_ortho_4x12_1x2uC(
-    Plus, BackSlash, Slash, Asterisk, _, _, _, _, Exlm, Question, Underscore, _,
-    Minus, Tilda, Caret, Dollar, Ampersand, _, _, _, Dot, Comma, Quote, DQuote,
-    Equal, Percent, Hash, At, Pipe, _, _, _, Colon, Semicolon, Grave, _,
-    _, _, _, _, _,  __,  _, _,  _, _, _
-),
-// [_APP] = LAYOUT_ortho_4x12_1x2uC(
-//     KC_KB_POWER, Restart, _, _, _, _, _, _, _, _, _, QK_BOOT,
-//     _, _, _, TG(_ALPHA2), _, _, _, _, _, _, _, _,
-//     _, _, _, _, _, _, _, _, _, _, _, _,
-//     _, _, _, _, _, __, _, _, _, _, _
-// ),
-    /*
-     * KC_LBRC [ ] KC_RBRC
-     * KC_LPRN ( ) KC_RPRN
-     * KC_LCBR { } KC_RCBR
-     * KC_LT < > KC_GT
-     */
-// [_BRACES] = LAYOUT_ortho_4x12_1x2uC(
-//     MuteNotify, DismissNotification, KC_LCBR, KC_RCBR, PrntSc1, _, _, _, KC_LBRC, KC_RBRC, _, Vpn,
-//     AudioMicMute, RGB_TOG, KC_LPRN, KC_RPRN, PrntSc2, _, _, _, Menu, Buffer, Commands, _,
-//     Mute, Rec, _RT, _RF, PrntSc3, _, _, _,             LightDec, LightInc, SoundDec, SoundInc,
-//     _, _, _, _, _, __, KC_LT, KC_GT, _, _, _
-// ),
-[_BRACES] = LAYOUT_ortho_4x12_1x2uC(
-    KC_KB_POWER, Restart , Ampersand, Pipe, _, _, _, _, KC_LBRC, KC_RBRC, _, QK_BOOT,
-    _, _, _,_, _, _, _, _, KC_LPRN, KC_RPRN, KC_LT, KC_GT,
-    _, _, _RT, _RF, _, _, _, _, KC_LCBR, KC_RCBR, CODE_TO,CODE_ARRAY,
-    _, _, _, _, _, __, _, _, _, _, _
-),
-[_APP] = LAYOUT_ortho_4x12_1x2uC(
-    RGB_TOG, _, Rec, _, _, _, _, _, PrntSc1, PrntSc2,PrntSc3, _,
-    AudioMicMute,Mute,MuteNotify, NoNotify, _, _, _, _, Menu, _, _, ModeControl,
-    _, _, Commands, Vpn, _, _, _, _, LightDec, LightInc, SoundDec, SoundInc,
-    _, _, _, _, _, __, _, _, _, _, _
-),
-[_NAVIGATION] = LAYOUT_ortho_4x12_1x2uC(
-    Home, End, PgUp, PgDn,    _, _, _, _, SCUp, SCDown, _, _,
-    _, _, Left,      Right,   _,  _, _, _, PrevApp, NextWindow, Tmux, _,
-    _, WheelUp, WheelDown, Lang, KC_CAPS, _, _, _,   Browser, Chat, Term,  WS_3,
-    _,    _,    _,    MO(_APP),    DELETE_LINE, __, _, _, _, _, _
-),
-// [_TG] = LAYOUT_ortho_4x12_1x2uC(
-//     _, _, _, _,         _, _, _, _,   _, _, _, _,
-//     _, _, SCUp, SCDown,   _, _, _, _,   _, _, _, _,
-//     _, _, _, _, _,         _, _,   _, _, _, _, _,
-//     _, _, _,      _,      _,          __,    _, _, _, _, _
-// ),
 };
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
